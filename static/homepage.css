@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+
+
+*{                 /*CSS reset*/
+    margin: 0;    /*max screen area used*/
+    padding: 0;
+    box-sizing: border-box;
+     /*padding accomodate inside border i.e width remain same*/
+}
+
+body{
+    font-family: helvetica;
+    color: black;
+}
+
+/* upto here defalult */
+
+
+/* Favorable */
+
+.text-red{
+    color: #e63946;
+}
+
+.text-light{
+    color:  #f4f4f4;
+}
+
+.text-white{
+    color:#FFFFFF;
+}
+
+
+.text-black{
+    color: #333;
+}
+
+.text-grey{
+    color: #555;
+}
+
+
+p, li{
+    font-size: 1.60rem;
+    margin: 0.5em;
+    letter-spacing: 0.10em;
+}
+h1, h2, h3, h4, h5, h6{
+    margin-bottom: 0.5em;
+    /* letter-spacing: 0.10em; */
+    /* font-weight: 500; */
+}
+
+/* ######## styling of navigatin bar */
+.navbar{
+    border: 0px solid red;
+    height: 64px;
+    /* margin:3rem auto; */
+    /* max-width: 1440px; */
+    display: grid;
+    /* now navbar is grid container and all its children are grid children */
+    grid-template-columns: 3fr 1fr 1fr .15fr 2fr 0.5fr 1fr;
+    font-size: 1rem;
+}
+.navbar .navbar_boxes{
+    /* grid childrens of navbar  */
+    border: 0px solid green;
+
+}
+.navbar .box1{
+    /* margin-top: 1rem; */
+    display: flex;
+    align-items: center;
+    padding-left: 5rem;
+}
+.navbar .navbar_boxes{
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    /* padding-left: 5rem; */
+}
+
+
+.navbar .search-feild{
+    width: 17.073rem;
+    height: 2.5rem;
+    border-radius: 1.25rem;
+    /* border-width: 0.1rem; */
+    border: 2px solid #E1E1E1;
+}
+
+.navbar .box4{
+    margin-left: 0rem;
+}
+
+/* ######styling of section just below nav bar######## */
+
+.below-navbar{
+    height: 75vh;
+    border: 0px solid green;
+    background: url(/static/lady\ with\ laptop.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* display: grid; */
+}
+
+.below-navbar .box{
+    /* display: flex; */
+    display: block;
+    border: 1px solid black;
+    height: auto;
+}
+.below-navbar .box3{
+    /* display: flex; */
+}
+
+
+
+
+
+
+
+
