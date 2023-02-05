@@ -51,14 +51,14 @@ body{
 /* ######## styling of navigatin bar */
 
 .navbar{
-    border: 1px solid red;
+    border: 0px solid red;
     height: 56px;
     display: grid;
     grid-template-columns: 2fr .5fr .5fr 2fr 0.5fr 1fr;
 }
 
 .allbox{
-    border: 1px solid green;
+    border: 0px solid green;
 }
 
 
@@ -93,6 +93,26 @@ input[type=search]{
 .expert{
     margin-left: 2rem;
 }
+
+
+
+
+
+
+
+
+
+/* styling of just below navbar */
+
+.below-navbar .box7{
+    background: url('/static/lady\ with\ laptop.jpg');
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
 
 
 
