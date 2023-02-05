@@ -3,6 +3,7 @@
 
 
 *{
+
     margin: 0;   
     padding: 0;
     box-sizing: border-box;
@@ -51,40 +52,64 @@ body{
 /* ######## styling of navigatin bar */
 
 .navbar{
-    border: 0px solid red;
-    height: 56px;
+    font-size: 14px;
+    border: 1px solid #E1E1E1;
+    height: 60px;
     display: grid;
-    grid-template-columns: 2fr .5fr .5fr 2fr 0.5fr 1fr;
+    grid-template-columns: 8fr 1.5fr 1fr 2fr 1fr 1.5fr;
+    font-family: helvetica neue;
+    font-weight: 500
+;
 }
 
-.allbox{
-    border: 0px solid green;
-}
+
 
 
 
 input[type=search]{
-    margin-top: 7px;
-    margin-left: 6rem;
+    margin-top: 9px;
+    margin-left: 1rem;
     height: 40px;
     width: 273px;
     border-radius: 20px;
     border-width: 1.5px;
     border-color: rgba(127,159,177,0.3);
     text-align: center;
+   font-size: 14px;
+   border-style: solid;
+  
 }
+.box4 ::placeholder{
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    font-family:  Helvetica, sans-serif;
+   position: absolute;
+   left: 3.5rem;   
+   top:.65rem;
+
+}
+.nav-search{
+    padding-left: 4px;
+}
+
+
 .box4{
-    position: relative;
+    display: flex;
+
+    
 }
 
 .search-icon{
     position: absolute;
-    margin-left: 7rem;
-    margin-top: 1.2rem;
+    margin-left:2.5rem;
+    margin-top: 1.27rem;
+    font-size: 17px;
 }
 
 .bigya, .our-services, .expert, .signup, .login{
-    margin-top: 1rem;
+    margin-top: 1.3rem;
+    margin-left: 1.5rem;
 }
 .bigya{
     margin-left: 5rem;
@@ -92,33 +117,16 @@ input[type=search]{
 
 .expert{
     margin-left: 2rem;
+    margin-right: 3rem;
 }
-
-
-
-
-
-
-
-
-
-/* styling of just below navbar */
-
-.below-navbar .box7{
-    background: url('/static/lady\ with\ laptop.jpg');
-    height: 80vh;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
+a{
+    text-decoration: none;
+    color:black;
+    
 }
-
-
-
-
-
-
-
-
-
-
+a:hover{
+    text-decoration: underline;
+    text-decoration-color: #555;
+    text-decoration-thickness: 2px;
+    
+}

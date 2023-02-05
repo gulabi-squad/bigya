@@ -49,7 +49,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 /* styling of signup page */
-.l-container{
+.container{
     border: 1px solid #555;
     border-radius: 1rem;
     display: flex;
@@ -63,26 +63,26 @@ h1, h2, h3, h4, h5, h6{
 }
 
 
-.l-allbox{
+.allbox{
     /* border: 0.1px solid green; */
     height: 5rem;
 }
 
-.l-box4{
+.box4{
     display: flex;
     justify-content: space-evenly;
 }
-.l-box1{
+.box1{
     text-align: center;
     font-size: 1.5rem;
     height: 8rem;
 }
-.l-sign_up{
+.sign_up{
     margin-top: 1.5rem;
 
 }
 
-.l-box2, .l-box3, .l-box4, .l-box5{
+.box2, .box3, .box4, .box5{
     height:47.844px ;
     width: 444px;
 }
@@ -110,18 +110,18 @@ input[type=password]{
     border-color: rgba(127,159,177,0.3);
 }
 
-.l-box2{
+.box2{
     position: relative;
 }
-.l-box3{
+.box3{
     position: relative;
 }
-.l-u-logo{
+.u-logo{
     position: absolute;
     margin-left: 4.8rem;
     margin-top: 14px;
 }
-.l-u-pwd{
+.u-pwd{
     position: absolute;
     margin-left: 4.8rem;
     margin-top: 13px;
@@ -130,13 +130,13 @@ input[type=password]{
 /* .box4{
     position: relative;
 } */
-.l-checkbox{
+.checkbox{
     /* position: absolute; */
     /* margin-left: 3rem; */
     margin-bottom: 1.9rem;
     margin-left:3.7rem ;
 }
-.l-remember-me{
+.remember-me{
     margin-right: 8rem;
     margin-top: 0.07rem;
     color: #251E1E;
@@ -144,7 +144,7 @@ input[type=password]{
     font-size: 13px;
     font-weight: 500;
 }
-.l-forgot_password .l-forgot-pwd{
+.forgot_password .forgot-pwd{
     margin-right: 2rem;
     /* margin-top: 5rem; */
     color: #251E1E;
@@ -153,11 +153,11 @@ input[type=password]{
     font-weight: 500;
 }
 
-.l-box2{
+.box2{
     margin-bottom: 1.2rem;
 }
 
-.l-box4{
+.box4{
     margin-top: 0.5rem;
 }
 
@@ -177,61 +177,61 @@ input[type="submit"] {
 }
 
 
-.l-end-text{
+.end-text{
     text-align: center;
 }
 
-.l-box9 a{
+.box9 a{
     text-decoration: none;
     color: #00905d;
     /* color: #FFFFFF; */
     font-size: 14px;
     font-weight: 500;
 }
-.l-box4 a{
+.box4 a{
     /* text-decoration: none; */
     color: black;
 }
-.l-box8 a{
+.box8 a{
     text-decoration: none;
     color: black;
 }
-.l-box7 a{
+.box7 a{
     text-decoration: none;
     color: black;
 }
-.l-box7 .a{
+.box7 .a{
     text-align: center;
 }
-.l-box7,.l-box8{
+.box7,.box8{
     position: relative;
     display: flex;
     justify-content:space-evenly;
 }
-.l-google, .l-facebook{
+.google, .facebook{
     position: absolute;
     margin-right: 12rem;
     font-size: 14px;
 }
-.l-box5{
+.box5{
     color: white;
 }
 
-.l-box6{
+.box6{
     display: flex;
     margin-top: 1.5rem;
     /* border: 1px solid red; */
     flex-wrap: wrap;
     justify-content:space-between;
 }
-.l-box6 .l-left-boundary{
+.box6 .left-boundary{
     border: 0.1px solid rgba(127,159,177,0.3);
     width: 7rem;
     height: 0rem;
     margin-top: 0.4rem;
     margin-left: 5rem;
 }
-.l-box6 .l-right-boundary{
+.box6 .right-boundary{
     border: 0.1px solid rgba(127,159,177,0.3);
     border-width: 0.003px;
     width: 7rem;
@@ -240,7 +240,7 @@ input[type="submit"] {
     margin-right:5.8rem;
 }
 
-.l-box6 .l-or{
+.box6 .or{
     margin-right:0.5rem ;
     font-size: 16px;
     font-weight: 500;
