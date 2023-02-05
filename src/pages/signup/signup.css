@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
 
-
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 *{                 /*CSS reset*/
     margin: 0;    /*max screen area used*/
@@ -82,14 +82,14 @@ a{
 
 .box2{
     display: grid;
-    grid-template-columns: 12.9rem 10px;
+    grid-template-columns: 11rem 10px;
     /* column-gap: 10px; */
 
 
 }
-input[type=text]{
+ .box2 input[type=text]{
     height: 35px;
-    width: 130px;
+    width: 160px;
     text-align:center ;
     margin-left: 4rem;
     border-radius: 7px;
@@ -142,7 +142,7 @@ input[type="submit"] {
 
 
 
-input[type=password]{
+.pw  input[type=password]{
     
     text-align: center;
     margin-left: 4rem;
@@ -152,7 +152,16 @@ input[type=password]{
     border-width: 1.5px;
     border-color: rgba(127,159,177,0.3);
 }
-
+.pwd  input[type=password]{
+    
+    text-align: center;
+    margin-left: 4rem;
+    height: 35px;
+    width: 339px;
+    border-radius: 7px;
+    border-width: 1.5px;
+    border-color: rgba(127,159,177,0.3);
+}
 
 
 .box8{
@@ -180,30 +189,39 @@ input[type=password]{
 
 .box8 .or{
     margin-right:0.5rem ;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
 }
 
 
 .box9 .google{
-    margin-left: 9rem;
+    text-align: center;
+    
 }
 
 .box10 .facebook{
-    margin-left: 9rem;
-}
+    text-align: center;}
+  
 .facebook a{
+    font-family:sans-serif;
+    font-size: 14px;
     color: black;
 } 
 
 .google a{
+    font-family:sans-serif;
+       font-size: 14px;
     color: black;
 }
 
 .box11 .already{
+    font-size: 14px;
     text-align: center;
-}
+    color:rgba(0,0,0,0.6);
+    font-family:sans-serif;
+    font-weight: 500;
 
+}
 
 
 

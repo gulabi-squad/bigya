@@ -15,14 +15,18 @@ const Signup=()=>{
 
                 <input type="text" placeholder="First name" required />
                 </div>
-                <div className="ln">
+                <div className="box2">
                 <input className="ln" type="text" placeholder="Last name" required />
                 </div>
             </div>
             <div className="allbox box3"><input type="email" name="email" id="email"placeholder="Enter your email"required/></div>
             <div className="allbox box4"><input type="number" name="number" id="number"placeholder="Phone number"required /></div>
+            <div className="pw">
             <div className="allbox box5"><input type="password" name="password" id="createpassword"placeholder="Create password"required /></div>
+            </div>
+            <div className="pwd">
             <div className="allbox box6"><input type="password" name="password" id="confirmpassword"placeholder="Confirm password"required /></div>
+            </div>
             <div className="allbox box7"><input type="submit"name="submit" id="submit"value="Signup" /></div>
             <div className="allbox box8">
                 <div className="left-boundary"></div>
