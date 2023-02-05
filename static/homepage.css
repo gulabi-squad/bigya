@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+
+
+*{
+
+    margin: 0;   
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: helvetica;
+}
+
+/* upto here defalult */
+
+
+/* Favorable */
+
+.text-red{
+    color: #e63946;
+}
+
+.text-light{
+    color:  #f4f4f4;
+}
+
+.text-white{
+    color:#FFFFFF;
+}
+
+
+.text-black{
+    color: #333;
+}
+
+.text-grey{
+    color: #555;
+}
+
+.text-green{
+    color: #00905D;
+}
+
+.border-color{
+    color:  rgba(127,159,177,0.3);
+}
+
+
+
+/* ######## styling of navigatin bar */
+
+.navbar{
+    font-size: 14px;
+    border: 1px solid #E1E1E1;
+    height: 60px;
+    display: grid;
+    grid-template-columns: 8fr 1.5fr 1fr 2fr 1fr 1.5fr;
+    font-family: helvetica neue;
+    font-weight: 500
+;
+}
+
+
+
+
+
+input[type=search]{
+    margin-top: 9px;
+    margin-left: 1rem;
+    height: 40px;
+    width: 273px;
+    border-radius: 20px;
+    border-width: 1.5px;
+    border-color: rgba(127,159,177,0.3);
+    text-align: center;
+   font-size: 14px;
+  
+}
+.box4 ::placeholder{
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    font-family:  Helvetica, sans-serif;
+   position: absolute;
+   left: 3.5rem;   
+   top:.65rem;
+
+}
+.nav-search{
+    padding-left: 4px;
+}
+
+
+.box4{
+    display: flex;
+
+    
+}
+
+.search-icon{
+    position: absolute;
+    margin-left:2.5rem;
+    margin-top: 1.27rem;
+    font-size: 17px;
+}
+
+.bigya, .our-services, .expert, .signup, .login{
+    margin-top: 1.3rem;
+    margin-left: 1.5rem;
+}
+.bigya{
+    margin-left: 5rem;
+}
+
+.expert{
+    margin-left: 2rem;
+    margin-right: 3rem;
+}
+a{
+    text-decoration: none;
+    color:black;
+    
+}
+a:hover{
+    text-decoration: underline;
+    text-decoration-color: #555;
+    text-decoration-thickness: 2px;
+    
+}
+
+
+
+
+
+
+
+
