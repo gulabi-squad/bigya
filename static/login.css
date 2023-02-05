@@ -12,6 +12,7 @@
 body{
     font-family: helvetica;
     color: black;
+
 }
 
 /* upto here defalult */
@@ -41,61 +42,206 @@ body{
 }
 
 
-p, li{
-    font-size: 1.60rem;
-    margin: 0.5em;
-    letter-spacing: 0.10em;
-}
 h1, h2, h3, h4, h5, h6{
     margin-bottom: 0.5em;
     /* letter-spacing: 0.10em; */
     /* font-weight: 500; */
 }
 
-
-.submit-button{
-    display: block;
-    text-transform: uppercase;
-    padding: 0.5em 3em;
-    margin-top: 1.5rem;
-    color: #fff;
-    background: #e63946;
-    border: 2px solid red;
-    font-size: 1.8rem;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 5px 10px 0px black;
-    border-radius: 2rem;
+/* styling of signup page */
+.container{
+    border: 1px solid #555;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    height: 522px;
+    width: 472px;
+    margin-left: 28rem;
+    margin-top: 4.3rem;
+    border-color: rgba(127,159,177,0.3);
 }
 
-/* input[type="submit"] {
-    display: block;
-    text-transform: uppercase;
-    background: #e63946;
-    border: 2px solid red;
-    font-size: 1.8rem;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 5px 10px 0px black;
-    border-radius: 2rem;
-} */
-/* input[type=submit]{
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-  } */
 
+.allbox{
+    /* border: 0.1px solid green; */
+    height: 5rem;
+}
 
-.box9 .p{
+.box4{
+    display: flex;
+    justify-content: space-evenly;
+}
+.box1{
     text-align: center;
-  }
+    font-size: 1.5rem;
+    height: 8rem;
+}
+.sign_up{
+    margin-top: 1.5rem;
+
+}
+
+.box2, .box3, .box4, .box5{
+    height:47.844px ;
+    width: 444px;
+}
+input[type=text]{
+    width: 339px;
+    text-align:center ;
+    margin-left: 4rem;
+    height: 43px;
+    /* margin-top: 0rem; */
+    border-radius: 7px;
+    /* border: 1rem; */
+    border-width: 0.5px;
+    /* border-color: darkblue; */
+    border-color: rgba(127,159,177,0.3);
+}
+input[type=password]{
+    
+    text-align: center;
+    margin-left: 4rem;
+    height: 43px;
+    width: 339px;
+    border-radius: 7px;
+    border-width: 1.5px;
+    /* border-color: darkblue; */
+    border-color: rgba(127,159,177,0.3);
+}
+
+.box2{
+    position: relative;
+}
+.box3{
+    position: relative;
+}
+.u-logo{
+    position: absolute;
+    margin-left: 4.8rem;
+    margin-top: 14px;
+}
+.u-pwd{
+    position: absolute;
+    margin-left: 4.8rem;
+    margin-top: 13px;
+
+}
+/* .box4{
+    position: relative;
+} */
+.checkbox{
+    /* position: absolute; */
+    /* margin-left: 3rem; */
+    margin-bottom: 1.9rem;
+    margin-left:3.7rem ;
+}
+.remember-me{
+    margin-right: 8rem;
+    margin-top: 0.07rem;
+    color: #251E1E;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+.forgot_password .forgot-pwd{
+    margin-right: 2rem;
+    /* margin-top: 5rem; */
+    color: #251E1E;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.box2{
+    margin-bottom: 1.2rem;
+}
+
+.box4{
+    margin-top: 0.5rem;
+}
 
 
+input[type="submit"] {
+    display: block;
+    background:#07AE72;
+    height: 43px;
+    width: 339px;
+    text-align: center;
+    margin-left: 4rem;
+    border-radius: 5px;
+    /* border-width: 0.5px; */
+    font-size: 1.2rem;
+    color: white;
+    border-width: 0px;
+}
 
 
+.end-text{
+    text-align: center;
+}
+
+.box9 a{
+    text-decoration: none;
+    color: #00905d;
+    /* color: #FFFFFF; */
+    font-size: 14px;
+    font-weight: 500;
+}
+.box4 a{
+    /* text-decoration: none; */
+    color: black;
+}
+.box8 a{
+    text-decoration: none;
+    color: black;
+}
+.box7 a{
+    text-decoration: none;
+    color: black;
+}
+.box7 .a{
+    text-align: center;
+}
+.box7,.box8{
+    position: relative;
+    display: flex;
+    justify-content:space-evenly;
+}
+.google, .facebook{
+    position: absolute;
+    margin-right: 12rem;
+    font-size: 14px;
+}
+.box5{
+    color: white;
+}
+
+.box6{
+    display: flex;
+    margin-top: 1.5rem;
+    /* border: 1px solid red; */
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+.box6 .left-boundary{
+    border: 0.1px solid rgba(127,159,177,0.3);
+    width: 7rem;
+    height: 0rem;
+    margin-top: 0.4rem;
+    margin-left: 5rem;
+}
+.box6 .right-boundary{
+    border: 0.1px solid rgba(127,159,177,0.3);
+    border-width: 0.003px;
+    width: 7rem;
+    height: 0rem;
+    margin-top: 0.4rem;
+    margin-right:5.8rem;
+}
+
+.box6 .or{
+    margin-right:0.5rem ;
+    font-size: 16px;
+    font-weight: 500;
+}
