@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+
+
+*{                 /*CSS reset*/
+    margin: 0;    /*max screen area used*/
+    padding: 0;
+    box-sizing: border-box;
+     /*padding accomodate inside border i.e width remain same*/
+}
+
+body{
+    font-family: helvetica;
+    color: black;
+
+}
+
+/* upto here defalult */
+
+
+/* Favorable */
+
+.text-red{
+    color: #e63946;
+}
+
+.text-light{
+    color:  #f4f4f4;
+}
+
+.text-white{
+    color:#FFFFFF;
+}
+
+
+.text-black{
+    color: #333;
+}
+
+.text-grey{
+    color: #555;
+}
+
+
+h1, h2, h3, h4, h5, h6{
+    margin-bottom: 0.5em;
+    /* letter-spacing: 0.10em; */
+    /* font-weight: 500; */
+}
+
+/* styling of signup page */
+.container{
+    border: 1px solid #555;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    height: 30rem;
+    width: 28rem;
+    margin-left: 28rem;
+    margin-top: 5.5rem;
+}
+
+
+.allbox{
+    /* border: 1px solid green; */
+    height: 5rem;
+}
+
+.box4{
+    display: flex;
+    justify-content: space-evenly;
+}
+.box1{
+    text-align: center;
+    font-size: 1.5rem;
+    height: 8rem;
+}
+.sign_up{
+    margin-top: 1.7rem;
+
+}
+
+.box2, .box3, .box4, .box5{
+    height:47.844px ;
+    width: 444px;
+}
+input[type=text]{
+    width: 20rem;
+    text-align:center ;
+    margin-left: 4rem;
+    height: 2rem;
+    /* margin-top: 0rem; */
+    border-radius: 5px;
+    /* border: 1rem; */
+    border-width: 0.5px;
+    /* border-color: darkblue; */
+}
+input[type=password]{
+    width: 20rem;
+    text-align: center;
+    margin-left: 4rem;
+    height: 2rem;
+    border-radius: 5px;
+    border-width: 0.5px;
+    /* border-color: darkblue; */
+}
+.box2{
+    position: relative;
+}
+.box3{
+    position: relative;
+}
+.u-logo{
+    position: absolute;
+    margin-left: 4.8rem;
+    margin-top: 8.5px;
+}
+.u-pwd{
+    position: absolute;
+    margin-left: 4.8rem;
+    margin-top: 8.5px;
+
+}
+/* .box4{
+    position: relative;
+} */
+.checkbox{
+    /* position: absolute; */
+    /* margin-left: 3rem; */
+    margin-bottom: 1.9rem;
+    margin-left:2rem ;
+}
+.remember-me{
+    margin-right: 3.2rem;
+}
+.forgot-pwd{
+    margin-right: 3rem;
+}
+
+
+input[type="submit"] {
+    display: block;
+    background:#04AA6D;
+    width: 20rem;
+    text-align: center;
+    margin-left: 4rem;
+    height: 2rem;
+    border-radius: 5px;
+    border-width: 0.5px;
+    font-size: 1.2rem;
+    color: white;
+}
+.end-text{
+    text-align: center;
+}
+.box9 a{
+    text-decoration: none;
+    color: #04AA6D;
+    /* color: #FFFFFF; */
+}
+.box4 a{
+    text-decoration: none;
+    color: black;
+}
+.box8 a{
+    text-decoration: none;
+    color: black;
+}
+.box7 a{
+    text-decoration: none;
+    color: black;
+}
+.box7 .a{
+    text-align: center;
+}
+.box7,.box8{
+    position: relative;
+    display: flex;
+    justify-content:space-evenly;
+}
+.google, .facebook{
+    position: absolute;
+    margin-right: 12rem;
+}
+.box5{
+    color: white;
+}
+
+.box6{
+    display: flex;
+    /* border: 1px solid red; */
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+.box6 .left-boundary{
+    border: 0.1px solid black;
+    width: 7rem;
+    height: 0rem;
+    margin-top: 0.4rem;
+    margin-left: 6rem;
+    margin-left: 4rem;
+}
+.box6 .right-boundary{
+    border: 0.1px solid black;
+    width: 7rem;
+    height: 0rem;
+    margin-top: 0.4rem;
+    margin-right:4rem;
+}
+

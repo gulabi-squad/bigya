@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+
+
+*{                 /*CSS reset*/
+    margin: 0;    /*max screen area used*/
+    padding: 0;
+    box-sizing: border-box;
+     /*padding accomodate inside border i.e width remain same*/
+}
+
+body{
+    font-family: helvetica;
+    color: black;
+}
+
+/* upto here defalult */
+
+
+/* Favorable */
+
+.text-red{
+    color: #e63946;
+}
+
+.text-light{
+    color:  #f4f4f4;
+}
+
+.text-white{
+    color:#FFFFFF;
+}
+
+
+.text-black{
+    color: #333;
+}
+
+.text-grey{
+    color: #555;
+}
+
+
+p, li{
+    font-size: 1.60rem;
+    margin: 0.5em;
+    letter-spacing: 0.10em;
+}
+h1, h2, h3, h4, h5, h6{
+    margin-bottom: 0.5em;
+    /* letter-spacing: 0.10em; */
+    /* font-weight: 500; */
+}
+
+
+.submit-button{
+    display: block;
+    text-transform: uppercase;
+    padding: 0.5em 3em;
+    margin-top: 1.5rem;
+    color: #fff;
+    background: #e63946;
+    border: 2px solid red;
+    font-size: 1.8rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px 0px black;
+    border-radius: 2rem;
+}
+
+/* input[type="submit"] {
+    display: block;
+    text-transform: uppercase;
+    background: #e63946;
+    border: 2px solid red;
+    font-size: 1.8rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px 0px black;
+    border-radius: 2rem;
+} */
+/* input[type=submit]{
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  } */
+
+
+.box9 .p{
+    text-align: center;
+  }
+
+
+
+
