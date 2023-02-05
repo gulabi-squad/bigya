@@ -2,16 +2,14 @@
 
 
 
-*{                 /*CSS reset*/
-    margin: 0;    /*max screen area used*/
+*{
+    margin: 0;   
     padding: 0;
     box-sizing: border-box;
-     /*padding accomodate inside border i.e width remain same*/
 }
 
 body{
     font-family: helvetica;
-    color: black;
 }
 
 /* upto here defalult */
@@ -40,78 +38,54 @@ body{
     color: #555;
 }
 
+.text-green{
+    color: #00905D;
+}
 
-p, li{
-    font-size: 1.60rem;
-    margin: 0.5em;
-    letter-spacing: 0.10em;
+.border-color{
+    color:  rgba(127,159,177,0.3);
 }
-h1, h2, h3, h4, h5, h6{
-    margin-bottom: 0.5em;
-    /* letter-spacing: 0.10em; */
-    /* font-weight: 500; */
-}
+
+
 
 /* ######## styling of navigatin bar */
+
 .navbar{
-    border: 0px solid red;
-    height: 64px;
-    /* margin:3rem auto; */
-    /* max-width: 1440px; */
+    border: 1px solid red;
+    height: 56px;
     display: grid;
-    /* now navbar is grid container and all its children are grid children */
-    grid-template-columns: 3fr 1fr 1fr .15fr 2fr 0.5fr 1fr;
-    font-size: 1rem;
+    grid-template-columns: 2fr 1fr 1fr 2fr 0.5fr 0.5fr;
 }
-.navbar .navbar_boxes{
-    /* grid childrens of navbar  */
-    border: 0px solid green;
 
+.allbox{
+    border: 1px solid green;
 }
-.navbar .box1{
-    /* margin-top: 1rem; */
-    display: flex;
-    align-items: center;
-    padding-left: 5rem;
+
+
+
+input[type=search]{
+    margin-top: 7px;
+    margin-left: 1.5rem;
+    height: 40px;
+    width: 273px;
+    border-radius: 20px;
+    border-width: 1.5px;
+    border-color: rgba(127,159,177,0.3);
+    text-align: center;
 }
-.navbar .navbar_boxes{
+.box4{
+    position: relative;
+}
+
+.search-icon{
+    position: absolute;
+    margin-left: 2.5rem;
     margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    /* padding-left: 5rem; */
+}
+.bigya, .our-services, .expert, .signup, .login{
+    margin-top: 1rem;
 }
 
-
-.navbar .search-feild{
-    width: 17.073rem;
-    height: 2.5rem;
-    border-radius: 1.25rem;
-    /* border-width: 0.1rem; */
-    border: 2px solid #E1E1E1;
-}
-
-.navbar .box4{
-    margin-left: 0rem;
-}
-
-/* ######styling of section just below nav bar######## */
-
-.below-navbar{
-    height: 75vh;
-    border: 0px solid green;
-    background: url(/static/lady\ with\ laptop.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    /* display: grid; */
-}
-
-.below-navbar .box{
-    /* display: flex; */
-    display: block;
-    border: 1px solid black;
-    height: auto;
-}
 
 
 

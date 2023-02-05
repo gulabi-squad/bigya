@@ -41,12 +41,11 @@ body{
     color: #555;
 }
 
-
-h1, h2, h3, h4, h5, h6{
-    margin-bottom: 0.5em;
-    /* letter-spacing: 0.10em; */
-    /* font-weight: 500; */
+.border-color{
+    border-color: rgba(127,159,177,0.3);
 }
+
+
 
 /* styling of signup page */
 .container{

@@ -39,6 +39,10 @@ body{
     color: #555;
 }
 
+.border-color{
+    border-color: rgba(127,159,177,0.3);
+}
+
 
 
 /* styling of signup page */
