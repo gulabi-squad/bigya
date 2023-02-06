@@ -2,16 +2,15 @@
 
 
 
-*{                 /*CSS reset*/
-    margin: 0;    /*max screen area used*/
+*{                
+    margin: 0;    
     padding: 0;
     box-sizing: border-box;
-     /*padding accomodate inside border i.e width remain same*/
+
 }
 
 body{
     font-family: helvetica;
-    color: black;
 
 }
 
@@ -41,20 +40,19 @@ body{
     color: #555;
 }
 
-
-h1, h2, h3, h4, h5, h6{
-    margin-bottom: 0.5em;
-    /* letter-spacing: 0.10em; */
-    /* font-weight: 500; */
+.border-color{
+    color:  rgba(127,159,177,0.3);
 }
 
+
+
+
 /* styling of signup page */
-.container{
+.login-container{
     border: 1px solid #555;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     height: 522px;
     width: 472px;
     margin-left: 28rem;
@@ -64,79 +62,81 @@ h1, h2, h3, h4, h5, h6{
 
 
 .allbox{
-    /* border: 0.1px solid green; */
     height: 5rem;
 }
 
-.box4{
+
+.login-container .box4{
     display: flex;
     justify-content: space-evenly;
 }
-.box1{
+
+.login-container .box1{
     text-align: center;
     font-size: 1.5rem;
     height: 8rem;
 }
-.sign_up{
+
+.login-to-bigya{
     margin-top: 1.5rem;
 
 }
 
-.box2, .box3, .box4, .box5{
+.login-container .box2,.login-container .box3,.login-container .box4, .login-container .box5{
     height:47.844px ;
     width: 444px;
 }
-input[type=text]{
+
+.box2 input[type=text]{
     width: 339px;
     text-align:center ;
     margin-left: 4rem;
     height: 43px;
-    /* margin-top: 0rem; */
     border-radius: 7px;
-    /* border: 1rem; */
     border-width: 0.5px;
-    /* border-color: darkblue; */
     border-color: rgba(127,159,177,0.3);
 }
-input[type=password]{
-    
+
+
+.box3 input[type=password]{
     text-align: center;
     margin-left: 4rem;
     height: 43px;
     width: 339px;
     border-radius: 7px;
     border-width: 1.5px;
-    /* border-color: darkblue; */
     border-color: rgba(127,159,177,0.3);
 }
 
-.box2{
+
+.login-container .box2,.login-container .box3{
     position: relative;
 }
-.box3{
-    position: relative;
-}
-.u-logo{
+
+
+
+.box2 .u-logo{
     position: absolute;
     margin-left: 4.8rem;
     margin-top: 14px;
 }
-.u-pwd{
+
+
+.box3 .u-pwd{
     position: absolute;
     margin-left: 4.8rem;
     margin-top: 13px;
 
 }
-/* .box4{
-    position: relative;
-} */
-.checkbox{
-    /* position: absolute; */
-    /* margin-left: 3rem; */
+
+
+.login-container .box4 .checkbox{
     margin-bottom: 1.9rem;
     margin-left:3.7rem ;
 }
-.remember-me{
+
+
+.box4 .remember-me{
     margin-right: 8rem;
     margin-top: 0.07rem;
     color: #251E1E;
@@ -144,25 +144,30 @@ input[type=password]{
     font-size: 13px;
     font-weight: 500;
 }
-.forgot_password .forgot-pwd{
+
+
+.box4 .forgot_password .forgot-pwd{
     margin-right: 2rem;
-    /* margin-top: 5rem; */
     color: #251E1E;
     font-family: sans-serif;
     font-size: 13px;
     font-weight: 500;
 }
 
-.box2{
+
+
+.login-container .box2{
     margin-bottom: 1.2rem;
 }
 
-.box4{
+
+.login-container .box4{
     margin-top: 0.5rem;
 }
 
 
-input[type="submit"] {
+
+.box5 input[type="submit"] {
     display: block;
     background:#07AE72;
     height: 43px;
@@ -170,68 +175,77 @@ input[type="submit"] {
     text-align: center;
     margin-left: 4rem;
     border-radius: 5px;
-    /* border-width: 0.5px; */
     font-size: 1.2rem;
     color: white;
     border-width: 0px;
 }
 
 
-.end-text{
+
+.login-container .box9 .end-text{
     text-align: center;
 }
 
-.box9 a{
+
+.login-container .box9 a{
     text-decoration: none;
     color: #00905d;
-    /* color: #FFFFFF; */
     font-size: 14px;
     font-weight: 500;
 }
-.box4 a{
-    /* text-decoration: none; */
+
+.login-container .box4 a{
     color: black;
 }
-.box8 a{
+
+.login-container .box8 a{
     text-decoration: none;
     color: black;
 }
-.box7 a{
+
+.login-container .box7 a{
     text-decoration: none;
     color: black;
 }
-.box7 .a{
+
+.login-container .box7 .a{
     text-align: center;
 }
-.box7,.box8{
+
+.login-container .box7,.box8{
     position: relative;
     display: flex;
     justify-content:space-evenly;
 }
-.google, .facebook{
+
+.box7 .google,.box8 .facebook{
     position: absolute;
     margin-right: 12rem;
     font-size: 14px;
 }
-.box5{
+
+.login-container .box5{
     color: white;
 }
 
-.box6{
+
+.login-container .box6{
     display: flex;
     margin-top: 1.5rem;
-    /* border: 1px solid red; */
     flex-wrap: wrap;
     justify-content:space-between;
 }
-.box6 .left-boundary{
+
+.login-container .box6 .left-boundary{
     border: 0.1px solid rgba(127,159,177,0.3);
     width: 7rem;
     height: 0rem;
     margin-top: 0.4rem;
     margin-left: 5rem;
 }
-.box6 .right-boundary{
+
+
+.login-container .box6 .right-boundary{
     border: 0.1px solid rgba(127,159,177,0.3);
     border-width: 0.003px;
     width: 7rem;
@@ -240,7 +254,8 @@ input[type="submit"] {
     margin-right:5.8rem;
 }
 
-.box6 .or{
+
+.login-container .box6 .or{
     margin-right:0.5rem ;
     font-size: 16px;
     font-weight: 500;

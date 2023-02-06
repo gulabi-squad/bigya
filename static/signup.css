@@ -2,18 +2,21 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-*{                 /*CSS reset*/
-    margin: 0;    /*max screen area used*/
+*{                 
+    margin: 0;    
     padding: 0;
     box-sizing: border-box;
-     /*padding accomodate inside border i.e width remain same*/
 }
 
+
 body{
+
     font-family: helvetica;
 }
 
 /* upto here defalult */
+
+
 
 
 /* Favorable */
@@ -39,11 +42,15 @@ body{
     color: #555;
 }
 
+.border-color{
+    color:  rgba(127,159,177,0.3);
+}
+
 
 
 /* styling of signup page */
 
-.container{
+.signup-container{
     border: 1px solid #555;
     border-radius: 1rem;
     height: 522px;
@@ -60,34 +67,35 @@ body{
 a{
     text-decoration: none;
 }
-.box11 a{
-    text-decoration: none;
-    color: #00905d;
-}
-.box1{
+
+
+.signup-container .box1{
     text-align: center;
 }
-.box1 .create-account{
+
+.signup-container .box1 .create-account{
     margin-top: 1.5rem;
     font-size: 25px;
 }
 
-.box2{
+
+.signup-container .box2{
     display: grid;
 
 }
-.box3, .box4, .box5, .box6{
+
+.signup-container .box3, .signup-container .box4, .signup-container .box5, .signup-container .box6{
     width: 337px;
 }
 
-.box2{
+
+.signup-container .box2{
     display: grid;
     grid-template-columns: 11rem 10px;
-    /* column-gap: 10px; */
-
 
 }
-input[type=text]{
+
+.box2 input[type=text]{
     height: 35px;
     width: 160px;
     text-align:center ;
@@ -98,9 +106,7 @@ input[type=text]{
 }
 
 
-
-
-input[type=email]{
+.box3 input[type=email]{
     
     text-align: center;
     margin-left: 4rem;
@@ -112,7 +118,7 @@ input[type=email]{
 }
 
 
-input[type=number]{
+.box4 input[type=number]{
     
     text-align: center;
     margin-left: 4rem;
@@ -124,10 +130,31 @@ input[type=number]{
 }
 
 
+.box5 input[type=password]{
+    
+    text-align: center;
+    margin-left: 4rem;
+    height: 35px;
+    width: 339px;
+    border-radius: 7px;
+    border-width: 1.5px;
+    border-color: rgba(127,159,177,0.3);
+}
 
 
+.box6 input[type=password]{
+    
+    text-align: center;
+    margin-left: 4rem;
+    height: 35px;
+    width: 339px;
+    border-radius: 7px;
+    border-width: 1.5px;
+    border-color: rgba(127,159,177,0.3);
+}
 
-input[type="submit"] {
+
+.box7 input[type="submit"] {
     display: block;
     background:#07AE72;
     height: 35px;
@@ -142,34 +169,23 @@ input[type="submit"] {
 
 
 
-input[type=password]{
-    
-    text-align: center;
-    margin-left: 4rem;
-    height: 35px;
-    width: 339px;
-    border-radius: 7px;
-    border-width: 1.5px;
-    border-color: rgba(127,159,177,0.3);
-}
-
-
-
-.box8{
+.signup-container .box8{
     display: flex;
     margin-top: 0rem;
     /* border: 1px solid red; */
     flex-wrap: wrap;
     justify-content:space-between;
 }
-.box8 .left-boundary{
+
+
+.signup-container .box8 .left-boundary{
     border: 0.1px solid rgba(127,159,177,0.3);
     width: 7rem;
     height: 0rem;
     margin-top: 0.4rem;
     margin-left: 5rem;
 }
-.box8 .right-boundary{
+.signup-container .box8 .right-boundary{
     border: 0.1px solid rgba(127,159,177,0.3);
     border-width: 0.003px;
     width: 7rem;
@@ -178,38 +194,45 @@ input[type=password]{
     margin-right:5.8rem;
 }
 
-.box8 .or{
+.signup-container .box8 .or{
     margin-right:0.5rem ;
     font-size: 14px;
     font-weight: 500;
 }
 
 
-.box9 .google{
+.signup-container .box9 .google{
     text-align: center;
     
 }
 
-.box10 .facebook{
+.signup-container .box10 .facebook{
     text-align: center;}
   
-.facebook a{
+.box10 .facebook a{
     font-family:sans-serif;
     font-size: 14px;
     color: black;
 } 
 
-.google a{
+.box9 .google a{
     font-family:sans-serif;
        font-size: 14px;
     color: black;
 }
 
-.box11 .already{
+
+
+.signup-container .box11 .already{
     font-size: 14px;
     text-align: center;
     color:rgba(0,0,0,0.6);
     font-family:sans-serif;
     font-weight: 500;
 
+}
+
+.signup-container .box11 a{
+    text-decoration: none;
+    color: #00905d;
 }
