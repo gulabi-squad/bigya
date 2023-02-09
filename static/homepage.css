@@ -331,6 +331,47 @@ a:hover{
 }
 
 
+.fade{
+    position: relative;
+}
+
+.mySlides p{
+    position: absolute;
+    margin-top: 7rem;
+    margin-left: 12rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.toilet p{
+    position: absolute;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.mySlides .register-now-btn{
+    position: absolute;
+    margin-top: 25rem;
+    margin-left:25rem;
+    
+}
+
+
+
+.mySlides input[type="submit"] {
+    display: block;
+    background:black;
+    color: white;
+    height: 43px;
+    width: 180px;
+    text-align: center;
+    
+    border-radius: 5rem;
+    font-size: 1.2rem;
+    color: white;
+}
 
 
 
