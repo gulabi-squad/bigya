@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="/static/homepage.css">
+    <link rel="stylesheet" href="/static/tailwind.css">
     <script src="https://kit.fontawesome.com/0c459f6576.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <main class="whole">
 
 
     <!-- Navigation Bar start -->
@@ -61,36 +63,47 @@
 
 
 
- <!-- Homepage -->
+ <!-- Landing (Homepage) page -->
 
- <div class="background-image">
-    <div class="background-content">
+<header class="background-image">
+
         <div class="text-one">
-            <p>Need an expert who can </p>
+            <p class="text-upper">Need an expert who can </p>
+            <p class="text-lower">do your job ?</p>
         </div>
+
 
         <div class="text-two">
-            <p>do your job ?</p>
+            <i class="homepage-search-icon fa-solid fa-magnifying-glass"></i>
+            <input type="search" name="" id="" placeholder="Search Your Experts .....">
         </div>
+
 
         <div class="text-three">
-            <i class="homepage-search-icon fa-solid fa-magnifying-glass"></i>
-            <input type="search" name="" id="">
-
+            <p class="help-you">Bigya is here to help you </p>
         </div>
-        <div class="text-four">
-            <p>Bigya is here to help you </p>
-        </div>
-    </div>
-
- </div>
+</header>
 
 
-<!-- End of Homepage -->
+
+<!-- End of landing page -->
 
 
 
 <!-- Training -->
+<div class="training">
+    <div class="heading">
+        <p>Expand Your Skill Training With Bigyas</p>
+    </div>
+    <div class="discription">
+        <p>Our Experts will provide you free training on their respective field every week. All you have to do is <br> <p class="text-continue">to fill the registration form to secure your seat for training.</p> </p>
+    </div>
+</div>
 
+<!-- end of training section -->
+
+
+
+</main>
 </body>
 </html>
