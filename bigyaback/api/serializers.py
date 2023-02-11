@@ -15,5 +15,4 @@ class UserSerializer(serializers.ModelSerializer):
         return User.objects.create_user(**validate_data)
 
 class VerifyAccountSerializer(serializers.Serializer):
-    email=serializers.EmailField()
     otp=serializers.CharField()

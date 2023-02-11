@@ -36,37 +36,65 @@ class VerifyOTP(APIView):
             data=request.data
             serializer=VerifyAccountSerializer(data=data)
             if serializer.is_valid():
-                email=serializer.data['email']
                 otp=serializer.data['otp']
-                user=User.objects.filter(email=email)
+                user=User.objects.filter(otp=otp,is_email_verified=False)
                 if not user.exists():
                     return Response({
                         'status':400,
-                        'message':'something went wrong',
+                        'message':'Otp invalid',
                         'data':serializer.errors
-                    })
-
-                if user[0].otp!=otp:
-                    return Response({
-                        'status':400,
-                        'message':'something went wrong',
-                        'data':'incorrect otp'
                     })
                 user=user.first()
                 user.is_email_verified=True
                 user.save()
                 return Response({
-                    'status':400,
+                    'status':200,
                     'message':'account verified',
                     'data':{}
                 })
+
+            return Response('Invalid details')
+        except Exception as e:
+            return Response('An error occured')
+
+
+
+
+
+        #     data=request.data
+        #     serializer=VerifyAccountSerializer(data=data)
+        #     if serializer.is_valid():
+        #         email=serializer.data['email']
+        #         otp=serializer.data['otp']
+        #         user=User.objects.filter(email=email)
+        #         if not user.exists():
+        #             return Response({
+        #                 'status':400,
+        #                 'message':'something went wrong',
+        #                 'data':serializer.errors
+        #             })
+
+        #         if user[0].otp!=otp:
+        #             return Response({
+        #                 'status':400,
+        #                 'message':'something went wrong',
+        #                 'data':'incorrect otp'
+        #             })
+        #         user=user.first()
+        #         user.is_email_verified=True
+        #         user.save()
+        #         return Response({
+        #             'status':400,
+        #             'message':'account verified',
+        #             'data':{}
+        #         })
                     
-            return Response('hahaha')
+        #     return Response('hahaha')
 
             
 
-        except Exception as e:
-            return Response('haha')
+        # except Exception as e:
+        #     return Response('haha')
             
 
 
