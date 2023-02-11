@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+
+
+*{                 /*CSS reset*/
+    margin: 0;    /*max screen area used*/
+    padding: 0;
+    box-sizing: border-box;
+     /*padding accomodate inside border i.e width remain same*/
+}
+
+body{
+    font-family: helvetica;
+    color: black;
+
+}
+
+/* upto here defalult */
+
+
+/* Favorable */
+
+.text-red{
+    color: #e63946;
+}
+
+.text-light{
+    color:  #f4f4f4;
+}
+
+.text-white{
+    color:#FFFFFF;
+}
+
+
+.text-black{
+    color: #333;
+}
+
+.text-grey{
+    color: #555;
+}
+
+
+h1, h2, h3, h4, h5, h6{
+    margin-bottom: 0.5em;
+    /* letter-spacing: 0.10em; */
+    /* font-weight: 500; */
+}
+
+/* styling of signup page */
+.l-container{
+    border: 1px solid #555;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    height: 522px;
+    width: 472px;
+    margin-left: 28rem;
+    margin-top: 4.3rem;
+    border-color: rgba(127,159,177,0.3);
+}
+
+
+.l-allbox{
+    /* border: 0.1px solid green; */
+    height: 5rem;
+}
+
+.l-box4{
+    display: flex;
+    justify-content: space-evenly;
+}
+.l-box1{
+    text-align: center;
+    font-size: 1.5rem;
+    height: 8rem;
+}
+.l-sign_up{
+    margin-top: 1.5rem;
+
+}
+
+.l-box2, .l-box3, .l-box4, .l-box5{
+    height:47.844px ;
+    width: 444px;
+}
+input[type=text]{
+    width: 339px;
+    text-align:center ;
+    margin-left: 4rem;
+    height: 43px;
+    /* margin-top: 0rem; */
+    border-radius: 7px;
+    /* border: 1rem; */
+    border-width: 0.5px;
+    /* border-color: darkblue; */
+    border-color: rgba(127,159,177,0.3);
+}
+input[type=password]{
+    
+    text-align: center;
+    margin-left: 4rem;
+    height: 43px;
+    width: 339px;
+    border-radius: 7px;
+    border-width: 1.5px;
+    /* border-color: darkblue; */
+    border-color: rgba(127,159,177,0.3);
+}
+
+.l-box2{
+    position: relative;
+}
+.l-box3{
+    position: relative;
+}
+.l-u-logo{
+    position: absolute;
+    margin-left: 4.8rem;
+    margin-top: 14px;
+}
+.l-u-pwd{
+    position: absolute;
+    margin-left: 4.8rem;
+    margin-top: 13px;
+
+}
+/* .box4{
+    position: relative;
+} */
+.l-checkbox{
+    /* position: absolute; */
+    /* margin-left: 3rem; */
+    margin-bottom: 1.9rem;
+    margin-left:3.7rem ;
+}
+.l-remember-me{
+    margin-right: 8rem;
+    margin-top: 0.07rem;
+    color: #251E1E;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+.l-forgot_password .l-forgot-pwd{
+    margin-right: 2rem;
+    /* margin-top: 5rem; */
+    color: #251E1E;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.l-box2{
+    margin-bottom: 1.2rem;
+}
+
+.l-box4{
+    margin-top: 0.5rem;
+}
+
+
+input[type="submit"] {
+    display: block;
+    background:#07AE72;
+    height: 43px;
+    width: 339px;
+    text-align: center;
+    margin-left: 4rem;
+    border-radius: 5px;
+    /* border-width: 0.5px; */
+    font-size: 1.2rem;
+    color: white;
+    border-width: 0px;
+}
+
+
+.l-end-text{
+    text-align: center;
+}
+
+.l-box9 a{
+    text-decoration: none;
+    color: #00905d;
+    /* color: #FFFFFF; */
+    font-size: 14px;
+    font-weight: 500;
+}
+.l-box4 a{
+    /* text-decoration: none; */
+    color: black;
+}
+.l-box8 a{
+    text-decoration: none;
+    color: black;
+}
+.l-box7 a{
+    text-decoration: none;
+    color: black;
+}
+.l-box7 .a{
+    text-align: center;
+}
+.l-box7,.l-box8{
+    position: relative;
+    display: flex;
+    justify-content:space-evenly;
+}
+.l-google, .l-facebook{
+    position: absolute;
+    margin-right: 12rem;
+    font-size: 14px;
+}
+.l-box5{
+    color: white;
+}
+
+.l-box6{
+    display: flex;
+    margin-top: 1.5rem;
+    /* border: 1px solid red; */
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+.l-box6 .l-left-boundary{
+    border: 0.1px solid rgba(127,159,177,0.3);
+    width: 7rem;
+    height: 0rem;
+    margin-top: 0.4rem;
+    margin-left: 5rem;
+}
+.l-box6 .l-right-boundary{
+    border: 0.1px solid rgba(127,159,177,0.3);
+    border-width: 0.003px;
+    width: 7rem;
+    height: 0rem;
+    margin-top: 0.4rem;
+    margin-right:5.8rem;
+}
+
+.l-box6 .l-or{
+    margin-right:0.5rem ;
+    font-size: 16px;
+    font-weight: 500;
+}
