@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/',RegisterAPI.as_view()),
     path('verify/',VerifyOTP.as_view()),
+    path('loginuser/',UserLoginView.as_view()),
 
 ]
