@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page
+
+    </title>
+    <link rel="stylesheet" href='{%static "style.css" %}'>
+ </head>
+<body>
+    <div class="maindiv">
+        <div class="login-left">
+            <br> <br> <br> <br>
+            <h1> Welccome To Nigga App</h1>
+            <p>Unlock the full potential of your team with our employee management platform</p>
+        
+        <br> <br>
+        <form method="post" class="login-form"> {% csrf_token %}
+    
+                <div class="form-item">
+                    <label class="em" for="email">Enter Email </label>
+                    <input type="text" class="box" name="username" placeholder="Enter your Email" required id="email"> 
+                </div>
+                <br>
+                <div class="form-item">
+                    <label class="pw" for="password"> Enter Password</label>
+                    <input type="password" class="box" name="password" placeholder="Password" required id="password">
+                </div>
+                <br>
+                
+                    <div class="checkbox">
+                    <input type="checkbox" id="rememberMeCheckbox">  
+                    <label for="checkbox" > Remember Me</label>
+                   
+            
+                
+                </div>
+                <div class="batan">
+                    <button class="btn" type="submit"> Sign In</button>
+                
+                </div>
+               
+               
+                </div>
+                <div>
+                {% if messages %}
+                 <ul class="messages">
+                 {% for message in messages %}
+                 <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                 {% endfor %}
+                 </ul>
+                {% endif %}
+                </div> 
+            
+            
+            
+        </form>
+        <div class="login-right">
+            <img class="img" src="{% static 'emp.jpg'%}">
+               </div>
+    </div>
+    
+</body>
+</html>
