@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/static/homepage.css">
+    <link rel="stylesheet" href="/static/tailwind.css">
+    <script src="https://kit.fontawesome.com/0c459f6576.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <main class="whole">
+
+
+    <!-- Navigation Bar start -->
+    <div class="homepage-navbar">
+        <div class="allbox box1">
+            <div class="bigya">
+                <a href="./homepage.html">Bigya</a>
+            </div>
+        </div>
+
+
+        <div class="allbox box2">
+            <div class="our-services">
+                <a href="#">Our Services</a>
+            </div>
+        </div>
+
+
+        <div class="allbox box3">
+            <div class="expert">
+                <a href="#">Bigya</a>
+            </div>
+        </div>
+
+
+        <div class="allbox box4">
+            <i class="search-icon fa-solid fa-magnifying-glass"></i>
+            <div class="navbar-search">
+                <input type="search" name="" id=""placeholder="Search...">
+            </div>
+        </div>
+
+
+        <div class="allbox box5">
+            <div class="login">
+                <a href="./login.html">Login</a>
+            </div>      
+        </div>
+
+
+        <div class="allbox box6">
+            <div class="signup">
+                <a href="./signup.html">Signup</a>
+            </div> 
+        </div>
+    </div> 
+ <!-- Ending of Navigation Bar -->
+
+
+
+
+
+ <!-- Landing (Homepage) page -->
+
+<header class="background-image">
+
+        <div class="text-one">
+            <p class="text-upper">Need an expert who can </p>
+            <p class="text-lower">do your job ?</p>
+        </div>
+
+
+        <div class="text-two">
+            <i class="homepage-search-icon fa-solid fa-magnifying-glass"></i>
+            <input type="search" name="" id="" placeholder="Search Your Experts .....">
+        </div>
+
+        <div class="text-three">
+            <p class="help-you">Bigya is here to help you </p>
+        </div>
+</header>
+
+
+
+<!-- End of landing page -->
+
+
+
+<!-- Training -->
+<div class="training">
+    <div class="heading">
+        <p>Expand Your Skill Training With Bigyas</p>
+    </div>
+    <div class="discription">
+        <p>Our Experts will provide you free training on their respective field every week. All you have to do is <br> <p class="text-continue">to fill the registration form to secure your seat for training.</p> </p>
+    </div>
+</div>
+
+<!-- end of training section -->
+
+
+
+<!-- Slide Show -->
+
+<form action="">
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+        <!-- <input class="register-now-btn" type="submit" name="" id="" value="Register Now"> -->
+        <a class="register-now-btn" type="submit" href="./signup.html">Register Now</a>
+        <p class="text1">Electician</p>
+      <img src="/static/electrician_at_poll_2.jpg">
+      
+    </div>
+    
+    <div class="mySlides fade toilet">
+        <!-- <input class="register-now-btn" type="submit" name="" id="" value="Register Now"> -->
+        <a class="register-now-btn" type="submit" href="./signup.html">Register Now</a>
+        <p class="text2">Toilet Cleaner</p>
+      <img src="/static/toilet_cleaner.jpg">
+      
+    </div>
+    
+    
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+</form>
+    
+
+ <!-- End of slide show -->
+
+
+<!-- Hire from category -->
+
+
+<div class="hire-from-category">
+    <p>Hire from Categories</p>
+    <p>Need to do here</p>
+</div>
+
+
+<!-- Ending of Hire from category -->
+
+<!--  about page  -->
+
+<div class="why-bigya">
+    <p class="text-one">why ??</p>
+    <p class="text-two">How ?</p>
+</div>
+
+<!-- ending of about page -->
+
+
+
+<!-- footer -->
+
+<div class="homepage-footer">
+    <p>Footer of Bigya</p>
+</div>
+<!-- ending of footer -->
+
+
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+    }
+    </script>
+
+</main>
+</body>
+</html>
