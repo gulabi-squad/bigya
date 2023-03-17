@@ -8,19 +8,23 @@ import {
 import Signup from './pages/signup/signup.component';
 import Home from './pages/home.component';
 import Login from './pages/login/login.component';
+import Expertlist from './pages/Expertlist';
 
 function App() {
   return (
-    <Router>
     <div>
+    <Router>
+    
     <Routes>
 
-    <Route path='/' exact element={<Home/>}/>
+    <Route path='/' element={<Home/>}/>
     <Route path='/signup'  element={<Signup/>}/>
     <Route path='/login'  element={<Login/>}/>
-      </Routes>
-    </div>
+    <Route path='/card'  element={<Expertlist/>}/>
+    </Routes>
+    
     </Router>
+    </div>
   );
 }
 

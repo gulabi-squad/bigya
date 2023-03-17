@@ -1,7 +1,8 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle ,faFacebook} from '@fortawesome/free-brands-svg-icons'
-import './signup.css'
+import { Link } from 'react-router-dom'
+
 
 
 const Signup=()=>{
@@ -46,7 +47,8 @@ const Signup=()=>{
                 </div>
             </div>
             <div className="allbox box11"><p className="already">Already have an account ?
-            <a href="./login.html">Login Now</a></p>
+            <Link to="/signup">            <span className="font-500 text-decoration-none text-blue-700 hover:text-blue-500 hover:underline" href=""> Create an Account</span>
+</Link>            </p>
             </div>
         </div>
     </form>
