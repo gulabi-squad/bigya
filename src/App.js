@@ -9,6 +9,7 @@ import Signup from './pages/signup/signup.component';
 import Home from './pages/home.component';
 import Login from './pages/login/login.component';
 import Expertlist from './pages/Expertlist';
+import Expertdetails from './pages/Expertdetails';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
     <Route path='/signup'  element={<Signup/>}/>
     <Route path='/login'  element={<Login/>}/>
     <Route path='/card'  element={<Expertlist/>}/>
+    <Route path='/details'  element={<Expertdetails/>}/>
     </Routes>
     
     </Router>
