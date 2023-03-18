@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 const Signup=()=>{
     return(
 <div>
+    {/* added comments */}
     <form action="">
         <div className="container">
             <div className="allbox box1"><p className="create-account">Create your account</p></div>
