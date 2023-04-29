@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import *
 
 class UserSerializer(serializers.ModelSerializer):
     passwordconfirm = serializers.CharField(style={'input_type':'password'}, write_only=True)
@@ -22,3 +22,8 @@ class UserLoginSerializer(serializers.ModelSerializer):
   class Meta:
     model = User
     fields = ['email', 'password']
+class ExpertProfileSerializer(serializers.ModelSerializer):
+    expert_image=serializers.ImageField(use_url=True)
+    class Meta:
+        model=ExpertProfile
+        fields=['name','description','category','expert_image','rating']

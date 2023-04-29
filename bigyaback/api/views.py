@@ -84,6 +84,8 @@ class UserLoginView(APIView):
 
 
 
+
+
         #     data=request.data
         #     serializer=VerifyAccountSerializer(data=data)
         #     if serializer.is_valid():
@@ -118,6 +120,32 @@ class UserLoginView(APIView):
 
         # except Exception as e:
         #     return Response('haha')
+
+
+class ExpertProfileView(APIView):
+    def post(self,request):
+        data=request.data
+        serializer=ExpertProfileSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({
+                'status':200,
+                'message':'expert form has been submitted',
+                'data':{}
+
+            })
+        return Response({
+            'status':400,
+            'message':'Sorry',
+            'data':serializer.errors
+
+        })
+    
+    def get(self,request):
+       experts=ExpertProfile.objects.all()
+       serializer=ExpertProfileSerializer(experts,many=True)
+       return Response(serializer.data)
+       
             
 
 
