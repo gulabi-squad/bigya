@@ -1,5 +1,4 @@
 import React from 'react'
-// import './signup.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle ,faFacebook} from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
@@ -11,48 +10,31 @@ const Signup=()=>{
 <div>
     {/* added comments */}
     <form action="">
-        <div className="container">
-            <div className="allbox box1"><p className="create-account">Create your account</p></div>
-            <div className="allbox box2">
-                <div className="fn">
+    <div className="flex flex-col gap-2 border-[1px] border-solid border-[rgba(127,159,177,0.3)] h-[522px] w-[472px] ml-[28rem] mt-[4.3rem] rounded-md ">
+        <div className="flex flex-col gap-6 items-center justify-center items-center">
+            <div className="mt-[28px] h-[31px] text-center"> Create Your Account </div>
+            <div className="flex items-center">
+            <div> <input className="w-[160px] h-[43px] rounded-md border-2 text-center" placeholder="First Name" type="text" required/></div>
+            <div> <input className="w-[160px] ml-4 h-[43px] rounded-md border-2 text-center" placeholder="Last Name" type="text" required/></div>
+            </div>
+            <div> <input className="w-[339px] h-[43px] rounded-md border-2 text-center" placeholder="Enter your Email" type="email" required/></div>
+            <div> <input className="w-[339px] h-[43px] rounded-md border-2 text-center" placeholder="Phone number" type="text"/></div>
+            <div> <input className="w-[339px] h-[43px] rounded-md border-2 text-center" placeholder=" Create Password" type="password" required/></div>
+            <div> <input className="w-[339px] h-[43px] rounded-md border-2 text-center" placeholder="Confirm Password" type="password" required/></div>
 
-                <input type="text" placeholder="First name" required />
-                </div>
-                <div className="box2">
-                <input className="ln" type="text" placeholder="Last name" required />
-                </div>
+            <div className="w-[339px] h-[43px] rounded-md bg-green-600 text-white text-[18px] justify-center text-center items-center" value="Sign Up" type="submit"><p className="mt-2 font-medium">Sign Up</p></div>
+            <div>         <p className="">Already have an Account? 
+            <Link to="/login">            <span className="font-500 text-decoration-none text-blue-700 hover:text-blue-500 hover:underline" href=""> Login here </span>
+</Link>
+</p></div>
+
             </div>
-            <div className="allbox box3"><input type="email" name="email" id="email"placeholder="Enter your email"required/></div>
-            <div className="allbox box4"><input type="number" name="number" id="number"placeholder="Phone number"required /></div>
-            <div className="pw">
-            <div className="allbox box5"><input type="password" name="password" id="createpassword"placeholder="Create password"required /></div>
-            </div>
-            <div className="pwd">
-            <div className="allbox box6"><input type="password" name="password" id="confirmpassword"placeholder="Confirm password"required /></div>
-            </div>
-            <div className="allbox box7"><input type="submit"name="submit" id="submit"value="Signup" /></div>
-            <div className="allbox box8">
-                <div className="left-boundary"></div>
-                <div className="or">or</div>
-                <div className="right-boundary"></div>
-            </div>
-            <div className="allbox box9">
-                <div className="google" >
-                <FontAwesomeIcon icon={faGoogle} />
-                    <a className="fb_google" href=""> Sign in with Google</a>
-                </div>
-            </div>
-            <div className="allbox box10">
-                <div className="facebook">
-                    <FontAwesomeIcon icon={faFacebook} />
-                     <a className="fb_google" href="">Sign with Facebook</a>
-                </div>
-            </div>
-            <div className="allbox box11"><p className="already">Already have an account ?
-            <Link to="/login">            <span className="font-500 text-decoration-none text-blue-700 hover:text-blue-500 hover:underline" href=""> Login </span>
-</Link>            </p>
-            </div>
+
+
+
+
         </div>
+       
     </form>
     </div>
 
