@@ -29,8 +29,8 @@ class ExpertProfile(models.Model):
     name=models.CharField(max_length=20)
     expert_image=models.ImageField(upload_to='expertprofile',blank=True)
     description=models.TextField(max_length=500)
-    rating=models.IntegerField(null=True)
     category = models.CharField(max_length=40)
+    ratingofex=models.IntegerField(blank=True,null=True)
     
     def __str__(self):
         return self.name
@@ -42,3 +42,12 @@ class Workdetails(models.Model):
     address=models.CharField(max_length=100)
 
 
+
+class Rating(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    expert=models.ForeignKey(ExpertProfile,on_delete=models.CASCADE)
+    rating=models.IntegerField(blank=True,null=True)
+
+    def __str__(self):
+        return self.expert.name
+                               

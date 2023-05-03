@@ -4,9 +4,11 @@ from rest_framework.response import Response
 # Create your views here.
 from .emails import *
 from rest_framework import status
+from uuid import UUID
 from .serializers import *
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
+import math
 
 def get_tokens_for_user(user):
   refresh = RefreshToken.for_user(user)
@@ -146,6 +148,74 @@ class ExpertProfileView(APIView):
        serializer=ExpertProfileSerializer(experts,many=True)
        return Response(serializer.data)
        
+
+class RatingView(APIView):
+   def post(self,request,pk):
+      expert_id = UUID(pk)
+      data=request.data
+      expert=ExpertProfile.objects.get(id=expert_id)
+      rating=data['ratingofex']
+      print(rating)
+      print(data)
+      print(expert.id)
+      print(expert.name)
+      userid=data['user']['user_id']
+      user=User.objects.get(id=userid)
+      print(user.email)
+      try:
+         ratingfilter=Rating.objects.get(user=user,expert=expert)
+         prevrating=ratingfilter.rating
+         prevavgrating=expert.ratingofex
+
+         ratingfilter.rating=rating
+         ratingfilter.save()
+         expert.ratingofex=math.ceil((prevavgrating*2-prevrating+ratingfilter.rating)/2)
+         expert.save()
+         return Response('rating saved')
+      
+      except Rating.DoesNotExist:
+         Rating.objects.create(expert=expert,user=user,rating=rating)
+         if expert.ratingofex is None:
+            expert.ratingofex=rating
+            expert.save()
+         else:
+            expert.ratingofex=math.ceil((expert.ratingofex+rating)/2)
+            expert.save()
+
+
+         return Response("rating saved")
+         
+         
+      
+         
+         
+      
+    
+      
+      
+      
+
+      
+    
+      
+      
+      
+    #   serializer=RatingSerializer(data=data,many=True)
+    #   if serializer.is_valid():
+    #      serializer.save()
+    #      return Response({
+    #             'status':200,
+    #             'message':'expert form has print(user.id)been submitted',
+    #             'data':{}
+
+    #         })
+    #   return Response({
+    #      'status':400,
+    #      'message':'Sorry',
+    #      'data':serializer.errors
+
+    #     })
+
             
 
 
