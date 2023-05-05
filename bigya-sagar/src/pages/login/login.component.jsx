@@ -3,9 +3,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle ,faFacebook} from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import AuthContext from '../../context/AuthContext'
 
 
 const Login = () => {
+let {loginUser}=useContext(AuthContext)
   return (
     <div className='login'>
         
@@ -17,16 +21,16 @@ const Login = () => {
          <div className="h-[47.884px] w-[444px]">
 
 
-           <form action="" method="">
+           <form onSubmit={loginUser} action="" method="">
              <div className="relative  mb-[1.2rem]">
                 <i className="u-logo absolute ml-[4.8rem] mt-[14px] fa-solid fa-user"></i>
-                <input className="w-[340px] ml-[4rem] h-[43px] rounded-[7px] text-center border-[1.5px] border-color-[rgba(127,159,177,0.3)] " type="text" name="" id="" placeholder="Username Or Email" required/>
+                <input className="w-[340px] ml-[4rem] h-[43px] rounded-[7px] text-center border-[1.5px] border-color-[rgba(127,159,177,0.3)] " type="text" name="email" id="" placeholder="Enter your email" required/>
              </div>
 
 
         <div className=" relative">
             <i className="u-pwd absolute ml-[4.8rem] mt-[14px] fa-solid fa-lock"></i>
-            <input className="w-[340px] ml-[4rem] h-[43px] rounded-[7px] text-center border-[1.5px] border-color-[rgba(127,159,177,0.3)] " type="password" name="" id="" placeholder="Password" required />
+            <input className="w-[340px] ml-[4rem] h-[43px] rounded-[7px] text-center border-[1.5px] border-color-[rgba(127,159,177,0.3)] " type="password" name="password" id="" placeholder="Password" required />
         </div>
 
 
