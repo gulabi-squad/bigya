@@ -24,6 +24,8 @@ urlpatterns = [
     path('verify/',VerifyOTP.as_view()),
     path('loginuser/',UserLoginView.as_view()),
     path('rateexpert/<str:pk>/',RatingView.as_view()),
+    path('clientform/',Clientrequest.as_view()),
+    
     path('submitexpert/',ExpertProfileView.as_view())
 ]
 if settings.DEBUG:

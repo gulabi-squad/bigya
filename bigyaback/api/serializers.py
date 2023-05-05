@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import *
+from uuid import UUID
 
 class UserSerializer(serializers.ModelSerializer):
     passwordconfirm = serializers.CharField(style={'input_type':'password'}, write_only=True)
@@ -25,12 +26,22 @@ class UserLoginSerializer(serializers.ModelSerializer):
 
 class ExpertProfileSerializer(serializers.ModelSerializer):
     expert_image=serializers.ImageField(use_url=True)
+    userid=serializers.IntegerField(source='user.id')
     # ratings=RatingSerializer(many=True)
     # weighted_rating=serializers.SerializerMethodField()
 
     class Meta:
         model=ExpertProfile
-        fields=['id','name','description','category','expert_image','ratingofex']
+        fields=['id','user','userid','name','description','category','expert_image','ratingofex']
+
+    def create(self, validated_data):
+        user = User.objects.get(id=validated_data['userid'])
+        name = validated_data['name']
+        category = validated_data['category']
+        expert_image = validated_data['expert_image']
+        description = validated_data['description']
+        
+        return ExpertProfile.objects.create(user=user, name=name,category=category,expert_image=expert_image,description=description)
         # def get_weighted_rating(self, obj):
         # # Calculate the weighted average of ratings for this post
         #     weighted_sum = 0
@@ -54,5 +65,24 @@ class ExpertProfileSerializer(serializers.ModelSerializer):
 
         #     return weighted_rating
         
+
+class WorkSerializer(serializers.ModelSerializer):
+    userid=serializers.IntegerField(write_only=True)
+    expertid=serializers.CharField(write_only=True)
+    username = serializers.CharField(source='user.first_name', read_only=True)
+    class Meta:
+        model=Workdetails
+        fields=['userid','username','user','expert','expertid','date','time','location','contact','description']
+
+    def create(self, validated_data):
+        user = User.objects.get(id=validated_data['userid'])
+        expert = ExpertProfile.objects.get(id=UUID(validated_data['expertid']))
+        date = validated_data['date']
+        time = validated_data['time']
+        location = validated_data['location']
+        contact = validated_data['contact']
+        description = validated_data['description']
+        
+        return Workdetails.objects.create(user=user, expert=expert, date=date,time=time,location=location,contact=contact,description=description)
 
 

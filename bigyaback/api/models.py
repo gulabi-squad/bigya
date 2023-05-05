@@ -25,6 +25,7 @@ class User(AbstractUser):
 
 class ExpertProfile(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,default=None,null=True)
 
     name=models.CharField(max_length=20)
     expert_image=models.ImageField(upload_to='expertprofile',blank=True)
@@ -36,10 +37,13 @@ class ExpertProfile(models.Model):
         return self.name
 
 class Workdetails(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE,null=True,default=None)
+    expert=models.ForeignKey(ExpertProfile,on_delete=models.CASCADE,null=True,default=None)
     description=models.TextField(max_length=1000,blank=False)
-    date=models.DateTimeField(auto_now=False)
+    date=models.DateField(auto_now=False)
+    time=models.TimeField(default=None,auto_now=False)
     contact=models.CharField(max_length=10)
-    address=models.CharField(max_length=100)
+    location=models.CharField(max_length=100,null=True,default="Nepal")
 
 
 

@@ -8,6 +8,12 @@ from uuid import UUID
 from .serializers import *
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.decorators import login_required
+from rest_framework.decorators import authentication_classes, permission_classes
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
+
 import math
 
 def get_tokens_for_user(user):
@@ -79,6 +85,7 @@ class UserLoginView(APIView):
     password = serializer.data.get('password')
     user = authenticate(email=email, password=password)
     if user is not None:
+      print(user.id)
       token = get_tokens_for_user(user)
       return Response({'token':token, 'msg':'Login Success', 'status':200})
     else:
@@ -127,6 +134,7 @@ class UserLoginView(APIView):
 class ExpertProfileView(APIView):
     def post(self,request):
         data=request.data
+        print(data)
         serializer=ExpertProfileSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -145,6 +153,7 @@ class ExpertProfileView(APIView):
     
     def get(self,request):
        experts=ExpertProfile.objects.all()
+       print(experts)
        serializer=ExpertProfileSerializer(experts,many=True)
        return Response(serializer.data)
        
@@ -185,6 +194,48 @@ class RatingView(APIView):
 
          return Response("rating saved")
          
+
+class Clientrequest(APIView):
+   authentication_classes = [JWTAuthentication]
+   permission_classes = [IsAuthenticated]
+   def post(self,request):
+      data=request.data
+      print(data)
+      serializer=WorkSerializer(data=data)
+      if serializer.is_valid():
+         serializer.save()
+         return Response({
+            "status":200,
+            "message":"Hire Request sent",
+            "data":{}
+         })
+      return Response({
+         "status":400,
+         "message":"Bad input",
+         "data":serializer.errors
+      })
+   def get(self,request):
+      expertuser=request.user
+      experts=ExpertProfile.objects.get(user=expertuser)
+      thatexpert=Workdetails.objects.filter(expert=experts)
+      if not thatexpert.exists():
+         return Response({
+            "status":400,
+            "message":"No hirers yet",
+            "data":{}
+
+         })
+      serializer=WorkSerializer(thatexpert,many=True)
+      return Response({
+         "status":200,
+         "message":"You've got hirers",
+         "data":serializer.data
+
+      })
+      
+      
+   
+
          
       
          
