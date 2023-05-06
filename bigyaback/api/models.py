@@ -37,6 +37,7 @@ class ExpertProfile(models.Model):
         return self.name
 
 class Workdetails(models.Model):
+    id = models.AutoField(primary_key=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True,default=None)
     expert=models.ForeignKey(ExpertProfile,on_delete=models.CASCADE,null=True,default=None)
     description=models.TextField(max_length=1000,blank=False)
@@ -44,6 +45,7 @@ class Workdetails(models.Model):
     time=models.TimeField(default=None,auto_now=False)
     contact=models.CharField(max_length=10)
     location=models.CharField(max_length=100,null=True,default="Nepal")
+    status=models.CharField(blank=True,max_length=30,default='pending')
 
 
 

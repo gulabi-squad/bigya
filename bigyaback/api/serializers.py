@@ -70,9 +70,11 @@ class WorkSerializer(serializers.ModelSerializer):
     userid=serializers.IntegerField(write_only=True)
     expertid=serializers.CharField(write_only=True)
     username = serializers.CharField(source='user.first_name', read_only=True)
+    expertname = serializers.CharField(source='expert.name', read_only=True)
+
     class Meta:
         model=Workdetails
-        fields=['userid','username','user','expert','expertid','date','time','location','contact','description']
+        fields=['status','userid','id','username','expertname','user','expert','expertid','date','time','location','contact','description']
 
     def create(self, validated_data):
         user = User.objects.get(id=validated_data['userid'])

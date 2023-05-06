@@ -212,20 +212,20 @@ class Clientrequest(APIView):
    permission_classes = [IsAuthenticated]
    def post(self,request):
       data=request.data
-      print(data)
       serializer=WorkSerializer(data=data)
       if serializer.is_valid():
          serializer.save()
          return Response({
             "status":200,
             "message":"Hire Request sent",
-            "data":{}
+            "data":serializer.data
          })
       return Response({
          "status":400,
          "message":"Bad input",
          "data":serializer.errors
       })
+#    This get function is for expert side 
    def get(self,request):
       expertuser=request.user
       experts=ExpertProfile.objects.get(user=expertuser)
@@ -245,6 +245,41 @@ class Clientrequest(APIView):
 
       })
       
+
+class Clientside(APIView):
+   def get(self,request):
+      user=request.user
+      proposals=Workdetails.objects.filter(user=user)
+      if not proposals.exists():
+         return Response({
+            "status":400,
+            "message":"No requests yet",
+            "data":{}
+
+         })
+      serializer=WorkSerializer(proposals,many=True)
+      return Response({
+         "status":200,
+         "message":"List of proposals",
+         "data":serializer.data
+
+      })
+   
+class Responseto(APIView):
+   def put(self,request,id):
+
+      try:
+
+         thatwork=Workdetails.objects.get(id=id)
+         data=request.data
+         status=data['status']
+         print(status)
+         thatwork.status=status
+         thatwork.save()
+         return Response({'status':status})
+      except thatwork.DoesNotExist:
+         return Response({'error':'The work doesnot exist'})
+
       
    
 
