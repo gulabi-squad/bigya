@@ -153,7 +153,19 @@ class ExpertProfileView(APIView):
     
     def get(self,request):
        experts=ExpertProfile.objects.all()
-       print(experts)
+
+       search_query=request.query_params.get('searchQuery',None)
+       print(search_query)
+       category_query=request.query_params.get('categoryQuery',None)
+       print(category_query)
+       if search_query:
+          experts=ExpertProfile.objects.filter(name__icontains=search_query)
+          print(experts)
+       if category_query:
+          experts=ExpertProfile.objects.filter(category__icontains=category_query)
+          print(experts)
+
+
        serializer=ExpertProfileSerializer(experts,many=True)
        return Response(serializer.data)
        
