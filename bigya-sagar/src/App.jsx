@@ -16,6 +16,7 @@ import Expertform from './components/expertform';
 import { AuthProvider } from './context/AuthContext';
 import Clientform from './components/clientform';
 import Hirerequest from './pages/hired.component';
+import ProposalList from './pages/Proposals';
 function App() {
   return (
     <Router>
@@ -33,6 +34,7 @@ function App() {
     <Route path='/allexperts/details'  element={<Expertdetails/>}/>
     <Route path='/rate'  element={<StarRating/>}/>
     <Route path='/hirerequests'  element={<Hirerequest/>}/>
+    <Route path='/proposals'  element={<ProposalList/>}/>
     <Route path='/allexperts/details/clientform'  element={<Clientform/>}/>
       </Routes>
       </AuthProvider>

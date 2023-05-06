@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useContext } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import AuthContext from '../context/AuthContext'
 const Clientform = () => {
     let {state}=useLocation()
     let {user,tokens}=useContext(AuthContext)
+    let [status,setStatus]=useState(null)
+    
     console.log(state.id)
     console.log(user.user_id)
     const submitClient= (e)=>{
@@ -26,8 +29,19 @@ const Clientform = () => {
               Authorization: `Bearer ${tokens.access}`
           }
           })
-        .then((response)=>console.log(response))
-        .then((error)=>console.log(error))
+        .then(response=>{
+            console.log(response)
+            if(response.data.status===200){
+                setStatus('success')
+            }
+            else{
+                setStatus('error')
+            }
+            
+        })
+        .catch(error=>{
+            console.log(error)
+        })
     }
     return (
         <div>
@@ -43,7 +57,10 @@ const Clientform = () => {
                 <div className=" mt-2 w-screen flex items-center justify-center"> <input className="bg-cyan-500 border border-black-100 placeholder-black placeholder-opacity-50 w-[200px] ml-[4rem] h-[43px] rounded-[7px] text-center text-white font-semibold" type="submit" name="" id="" value="Submit" required/>
                 </div>
                 </div>
+                <div>{status==='success' && <p>Hire request is sent.</p>}</div>
+                <div>{status==='error' && <p>Sorry the form was not submitted.Please try again</p>}</div>
                 </form>
+
 
             </div>
 

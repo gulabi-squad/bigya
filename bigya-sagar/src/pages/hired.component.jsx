@@ -6,8 +6,27 @@ import { Link } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
 
 const Hirerequest = () => {
+  let [status,setStatus]=useState('')
   let {tokens}=useContext(AuthContext)
   const [hirers,setHirers]=useState([])
+  const Accepthandler=(id)=>{
+    axios.put(`http://127.0.0.1:8000/response/${id}/`, { status: 'accepted' ,
+      headers: {
+        Authorization: `Bearer ${tokens.access}`
+    }
+    })
+    .then(response => setStatus(response.data.status))
+    .catch(error=>console.log(error))
+
+  }
+  const handleReject = (id) => {
+    axios.put(`http://127.0.0.1:8000/response/${id}/`, { status: 'rejected' ,
+      headers: {
+        Authorization: `Bearer ${tokens.access}`
+    }
+  })
+    .then(response => setStatus(response.data.status))
+    .catch(error=>console.log(error))  }
     const gethiredata=()=>{
       
        const url="http://127.0.0.1:8000/clientform/"
@@ -29,7 +48,7 @@ const Hirerequest = () => {
        },[])
     return (
       <div>
-        {hirers?(
+        {hirers.length>0 ?(
           hirers.map((hirer)=>{
             return(
             <div className="flex justify-center">
@@ -41,8 +60,11 @@ const Hirerequest = () => {
             <div> Time: <input className="width-[417px]  border-b-2 border-solid border-black" value={hirer.time}/>  </div> 
             <div> Location:<input className="width-[417px]  border-b-2 border-solid border-black" value={hirer.location}/>  </div> 
             <div> Description: <input className="width-[20rem] h-[10rem] border-2 border-solid border-black" value={hirer.description}/>  </div> 
-            <div><button  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">
+            <div><button onClick={()=>Accepthandler(hirer.id)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">
         Accept
+      </button>
+      <button onClick={()=>handleReject(hirer.id)} className="mx-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">
+        Reject
       </button>
       <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
             <svg className="h-6 w-6 inline-block mr-2" viewBox="0 0 24 24">
@@ -53,6 +75,7 @@ const Hirerequest = () => {
             </svg>
             Call Now
           </button>
+          <div>{hirer.status}</div>
       
       </div>
       
@@ -64,7 +87,7 @@ const Hirerequest = () => {
 
 
 
-   ):(<div>nigga</div>) }
+   ):(<div>No hirers yet</div>) }
           </div>
     )
     }
