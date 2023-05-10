@@ -1,6 +1,6 @@
 import React from 'react'
 import {FiSearch} from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+
 
 
 function Navbar(){
@@ -86,7 +86,7 @@ function Homepage() {
            
         </div>
         <div>
-            <div>Hello</div>
+            
             <div className='h-[50rem]'>Hello</div>
 
 
