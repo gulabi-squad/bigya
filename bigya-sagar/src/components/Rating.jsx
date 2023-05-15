@@ -4,17 +4,21 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import AuthContext from "../context/AuthContext";
 const StarRating = ({expert}) => {
-    let {user}=useContext(AuthContext)
+    let {tokens}=useContext(AuthContext)
     const [rating, setRating] = useState(0);
+    const [review,setReview]=useState('')
     const [hover, setHover] = useState(0);
 
     const handleRatingChange=()=>{
-      console.log(user.id)
       const url = `http://127.0.0.1:8000/rateexpert/${expert.id}/`;
     const data = { ratingofex: rating,
-                   user:user            
+                   review:review         
     };
-    axios.post(url, data)
+    axios.post(url, data,{
+      headers: {
+        Authorization: `Bearer ${tokens.access}`
+    }
+    })
       .then(response => {
         console.log(response)
       })
@@ -24,6 +28,7 @@ const StarRating = ({expert}) => {
     }
     return (
       <div>
+        <div>
         {[...Array(5)].map((star, index) => {
          const ratingValue=index+1
           return (
@@ -33,8 +38,13 @@ const StarRating = ({expert}) => {
          
           );
         })}
+        </div>
+        <div>
+         <input className="border-2 border-red-300 mb-2" type='text' placeholder="Your review" onChange={(e)=>setReview(e.target.value)}></input>
+         </div>
         <div className="font-bold text-white bg-green-500">
-        <button onClick={handleRatingChange}>Submit Rating</button>
+         
+        <button onClick={handleRatingChange}>Submit rating and review</button>
         </div>
       </div>
     );
