@@ -12,6 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from django.core.cache import cache
 
 
 import math
@@ -153,21 +154,27 @@ class ExpertProfileView(APIView):
     
     def get(self,request):
        experts=ExpertProfile.objects.all()
-
-       search_query=request.query_params.get('searchQuery',None)
-       print(search_query)
-       category_query=request.query_params.get('categoryQuery',None)
-       print(category_query)
-       if search_query:
-          experts=ExpertProfile.objects.filter(name__icontains=search_query)
-          print(experts)
-       if category_query:
-          experts=ExpertProfile.objects.filter(category__icontains=category_query)
-          print(experts)
-
-
        serializer=ExpertProfileSerializer(experts,many=True)
-       return Response(serializer.data)
+       return Response({
+          'status':200,
+          'message':'data from disk',
+          'data':serializer.data
+       })
+
+class FilteredexpertsView(APIView):
+   def get(self,request):
+      search_query=request.query_params.get('searchQuery',None)
+      print(search_query)
+      if search_query:
+         filteredexperts=ExpertProfile.objects.filter(name__icontains=search_query) or ExpertProfile.objects.filter(category__icontains=search_query)
+      serializer=ExpertProfileSerializer(filteredexperts,many=True)
+
+      return Response({
+         'status':200,
+         'message':'filtered experts',
+         'data':serializer.data
+      })
+
        
 
 class RatingView(APIView):
@@ -180,11 +187,15 @@ class RatingView(APIView):
       print(data)
       print(expert.id)
       print(expert.name)
-      userid=data['user']['user_id']
-      user=User.objects.get(id=userid)
+      
+      user=request.user
+      review=data['review']
       print(user.email)
       try:
          ratingfilter=Rating.objects.get(user=user,expert=expert)
+         ratingfilter.review=review
+
+
          prevrating=ratingfilter.rating
          prevavgrating=expert.ratingofex
 
@@ -195,7 +206,7 @@ class RatingView(APIView):
          return Response('rating saved')
       
       except Rating.DoesNotExist:
-         Rating.objects.create(expert=expert,user=user,rating=rating)
+         Rating.objects.create(expert=expert,user=user,rating=rating,review=review)
          if expert.ratingofex is None:
             expert.ratingofex=rating
             expert.save()
@@ -205,6 +216,25 @@ class RatingView(APIView):
 
 
          return Response("rating saved")
+      
+   def get(self,request,pk):
+      expert=ExpertProfile.objects.get(id=pk)
+      ratingsofexpert=Rating.objects.filter(expert=expert)
+      if not ratingsofexpert.exists():
+         return Response({
+            'status':400,
+            'message':'No ratings and reviews',
+            'data':{}
+
+         })
+
+      serializer=RatingSerializer(ratingsofexpert,many=True)
+      return Response({
+         'status':200,
+         'message':"Here are list of ratings and reviews",
+         'data':serializer.data
+      })
+
          
 
 class Clientrequest(APIView):

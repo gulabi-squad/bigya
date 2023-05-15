@@ -150,6 +150,13 @@ EMAIL_HOST_PASSWORD='idwzmprnwcnnqnlj'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://localhost:6379/1",
+    }
+}
+
 from datetime import timedelta
 
 SIMPLE_JWT = {

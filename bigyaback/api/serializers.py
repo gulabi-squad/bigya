@@ -88,3 +88,8 @@ class WorkSerializer(serializers.ModelSerializer):
         return Workdetails.objects.create(user=user, expert=expert, date=date,time=time,location=location,contact=contact,description=description)
 
 
+class RatingSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.first_name', read_only=True)
+    class Meta:
+        model=Rating
+        fields=['username','user','rating','review','expert']

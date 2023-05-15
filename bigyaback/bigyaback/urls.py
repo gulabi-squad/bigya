@@ -29,7 +29,9 @@ urlpatterns = [
     path('response/<int:id>/',Responseto.as_view()),
 
     
-    path('submitexpert/',ExpertProfileView.as_view())
+    path('submitexpert/',ExpertProfileView.as_view()),
+    path('filteredexperts/',FilteredexpertsView.as_view())
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

@@ -53,6 +53,7 @@ class Rating(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     expert=models.ForeignKey(ExpertProfile,on_delete=models.CASCADE)
     rating=models.IntegerField(blank=True,null=True)
+    review=models.CharField(max_length=600,blank=True)
 
     def __str__(self):
         return self.expert.name
