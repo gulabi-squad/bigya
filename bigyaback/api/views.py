@@ -153,8 +153,16 @@ class ExpertProfileView(APIView):
         })
     
     def get(self,request):
+       experts=cache.get("everyexperts")
+       if experts is not None:
+          return Response({
+             'status':200,
+             'message':'all experts from cache',
+             'data':experts
+          })
        experts=ExpertProfile.objects.all()
        serializer=ExpertProfileSerializer(experts,many=True)
+       cache.set('everyexperts',serializer.data)
        return Response({
           'status':200,
           'message':'data from disk',
