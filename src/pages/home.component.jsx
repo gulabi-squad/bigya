@@ -1,60 +1,56 @@
-import React from 'react'
-import {FiSearch} from 'react-icons/fi'
-
-
-
+import React, { useEffect, useState } from 'react'
 function Navbar(){
-    return(
-        
+  return(
+      
 <div className='flex justify-between'>
 <nav className="bg-white shadow w-screen fixed">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0 w-[12rem]">
-            <a href="/" className="font-bold text-xl text-gray-800">Logo</a>
-          </div>
-          
-          {/* Menu */}
-          <div className="hidden md:block ml-6">
-            <ul className="flex space-x-12">
-              <li>
-                <a href="/" className="text-gray-800 hover:text-gray-600">Home</a>
-              </li>
-              <li>
-                <a href="/expertlist" className="text-gray-800 hover:text-gray-600">Experts</a>
-              </li>
-              <li>
-                <a href="/forums" className="text-gray-800 hover:text-gray-600">Forums</a>
-              </li>
-              <li>
-                <a href="/training" className="text-gray-800 hover:text-gray-600">Training</a>
-  
-              </li>
-              <li>
-                <a href="/login" className="text-gray-800 hover:text-gray-600">Login</a>
-  
-              </li>
-              <li>
-                <a href="/signup" className="text-gray-800 hover:text-gray-600">Signup</a>
-  
-              </li>
-            </ul>
-          </div>
-          <div className="flex items-center ml-12">
-            <input
-              type="text"
-              placeholder="Search"
-              className="bg-white-200 text-gray-800 px-4 py-2 rounded-xl border border-black-200 focus:outline-none focus:ring focus:ring-blue-300"
-            />
-            
-            {/* Notification Icon */}
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="ml-12" viewBox="0 0 16 16"> <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/> </svg>
-          </div>
-          <div className="ml-12 w-[8rem] mr-4">Profile </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between h-16">
+        {/* Logo */}
+        <div className=" w-[12rem]">
+          <a href="/" className="font-bold text-xl text-gray-800">Logo</a>
         </div>
+        
+        {/* Menu */}
+        <div className="ml-6">
+          <ul className="flex space-x-12">
+            <li>
+              <a href="/" className="text-gray-800 hover:text-gray-600">Home</a>
+            </li>
+            <li>
+              <a href="/expertlist" className="text-gray-800 hover:text-gray-600">Experts</a>
+            </li>
+            <li>
+              <a href="/forums" className="text-gray-800 hover:text-gray-600">Forums</a>
+            </li>
+            <li>
+              <a href="/training" className="text-gray-800 hover:text-gray-600">Training</a>
+
+            </li>
+            <li>
+              <a href="/login" className="text-gray-800 hover:text-gray-600">Login</a>
+
+            </li>
+            <li>
+              <a href="/signup" className="text-gray-800 hover:text-gray-600">Signup</a>
+
+            </li>
+          </ul>
+        </div>
+        <div className="flex items-center ml-12">
+          <input
+            type="text"
+            placeholder="Search"
+            className="bg-white-200 text-gray-800 px-4 py-2 rounded-xl border border-black-200 focus:outline-none focus:ring focus:ring-blue-300"
+          />
+          
+          {/* Notification Icon */}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="ml-12" viewBox="0 0 16 16"> <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/> </svg>
+        </div>
+        <div className="ml-12 w-[8rem] mr-4">Profile </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
 {/* <div>practice</div>
 <div className='flex gap-20'>
@@ -68,31 +64,49 @@ function Navbar(){
 
 </div> */}
 
-    </div>)
+  </div>)
 }
 
+const texts = ['Hire the experts you need. ', 'Post your queries in Bigya-forums. ', 'Enroll in training now. '];
 
-function Homepage() {
+const Homepage = () => {
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const current = texts[currentIndex];
+      const text = currentText + current.charAt(currentText.length);
+
+      if (text === current) {
+        clearInterval(interval);
+
+        // Move to the next text after a delay
+        setTimeout(() => {
+          setCurrentText('');
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+        }, 1000);
+      } else {
+        setCurrentText(text);
+      }
+    }, 150);
+
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, [currentText, currentIndex]);
+
   return (
     <div>
-        <Navbar />
-        <div className=' w-[93%] mx-12 h-[33rem]'>
-            <div className='pt-[12rem]'>
-            
-            <p className='text-white font-bold text-3xl py-4 max-w-lg'>NEED AN EXPERT WHO CAN DO YOUR JOB?</p>
-            <p className='absolute p-1'><FiSearch/></p>
-            <input type="text" className=' rounded pl-16'></input>
-            </div>
-           
-        </div>
-        <div>
-            
-            <div className='h-[50rem]'>Hello</div>
-
-
-        </div>
+      <Navbar></Navbar>
+    <div className="flex items-center justify-center h-screen bg-gray-100">
+    
+      <h1 className="text-4xl font-bold text-center font-mono">
+        {currentText}
+      </h1>
     </div>
-  )
-}
+    <div className=" h-[100rem]  bg-gray-100"> Hello </div>
+    </div>
+    
+  );
+};
 
-export default Homepage
+export default Homepage;
