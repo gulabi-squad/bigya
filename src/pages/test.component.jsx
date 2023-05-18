@@ -1,66 +1,47 @@
 import React, { useEffect, useState } from 'react';
+import Carousel from './carousel.component';
 
-function App() {
-  const lines = [
-    "Hire any experts you need",
-    "Post your queries in forums",
-    "Enroll in training"
-  ];
-  const [currentLine, setCurrentLine] = useState(0);
-  const [animatedText, setAnimatedText] = useState('');
+const Homepage = () => {
+  const texts = ['Hire the experts you need. ', 'Post your queries in Bigya-forums. ', 'Enroll in training now. '];
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const typeText = () => {
-      if (animatedText === lines[currentLine]) {
+    const interval = setInterval(() => {
+      const current = texts[currentIndex];
+      const text = currentText + current.charAt(currentText.length);
+
+      if (text === current) {
+        clearInterval(interval);
+
+        // Move to the next text after a delay
         setTimeout(() => {
-          deleteText();
-        }, 2000); // Delay before deleting text
-        return;
+          setCurrentText('');
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+        }, 1000);
+      } else {
+        setCurrentText(text);
       }
+    }, 150);
 
-      const nextChar = lines[currentLine][animatedText.length];
-      setAnimatedText(prevText => prevText + nextChar);
-
-      setTimeout(typeText, 100); // Typing speed
-    };
-
-    const deleteText = () => {
-      if (animatedText === '') {
-        setCurrentLine(prevLine => (prevLine + 1) % lines.length);
-        setTimeout(() => {
-          typeText();
-        }, 1000); // Delay before typing next line
-        return;
-      }
-
-      setAnimatedText(prevText => prevText.slice(0, -1));
-
-      setTimeout(deleteText, 50); // Deletion speed
-    };
-
-    typeText();
-  }, [currentLine, animatedText]);
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, [currentText, currentIndex]);
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <header className="py-6 text-center">
-        <h1 className="text-4xl font-bold text-gray-800">Welcome to our Website!</h1>
-      </header>
-
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="text-container">
-          <h1 className="animated-text text-4xl font-bold mb-8">{animatedText}</h1>
-          {currentLine === 0 && <p className="animated-text text-xl mb-4">{lines[0]}</p>}
-          {currentLine === 1 && <p className="animated-text text-xl mb-4">{lines[1]}</p>}
-          {currentLine === 2 && <p className="animated-text text-xl mb-4">{lines[2]}</p>}
-        </div>
+    <div>
+      <div className='flex items-center justify-center mt-[4rem] h-[39rem] opacity-100 bg-[url("/src/assets/girl_with_laptop.jpg")] bg-cover'>
+        <div className="flex text-center"></div>
+     
+      <div className="flex items-center justify-center ">
+        <h1 className="text-7xl font-bold text-white drop-shadow-lg shadow-black">
+          {currentText}
+        </h1>
       </div>
-
-      <footer className="bg-gray-800 text-white text-center py-4">
-        <p>&copy; 2023 Your Company. All rights reserved.</p>
-      </footer>
+      </div>
+      <div className="h-[16rem] bg-gray-100"></div>
+      <div className="h-[30rem] bg-gray-500"></div>
     </div>
   );
-}
+};
 
-export default App;
+export default Homepage;

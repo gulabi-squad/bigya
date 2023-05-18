@@ -14,6 +14,7 @@ import Expertlist from './pages/Expertlist';
 import Expertdetails from './pages/Expertdetails';
 import Clientform from './pages/form.component';
 import Hired from './pages/hired/hired.component';
+import Testing from './pages/testing.component'
 function App() {
   return (
     
@@ -31,6 +32,8 @@ function App() {
     <Route path='/details'  element={<Expertdetails/>}/>
     <Route path='/clientform'  element={<Clientform/>}/>
     <Route path='/hired'  element={<Hired/>}/>
+    <Route path='/testing'  element={<Testing/>}/>
+    
     </Routes>
     
     </Router>
