@@ -18,9 +18,8 @@ import Clientform from './components/clientform';
 import Hirerequest from './pages/hired.component';
 import ProposalList from './pages/Proposals';
 import Filteredexperts from './pages/filteredexperts';
-import Allforums from './pages/Forums';
-import Filteredforums from './pages/filteredforums';
-import PrivateRoute from './utils.jsx/PrivateRoute';
+import Showreviews from './components/showreviews';
+import Details from './components/details'
 function App() {
   return (
     <Router>
@@ -33,17 +32,17 @@ function App() {
     <Route path='/signup/otp'  element={<Otp/>}/>
 
     <Route path='/login'  element={<Login/>}/>
-    <Route path='/forums'  element={<PrivateRoute><Allforums/></PrivateRoute>}/>
     <Route path='/allexperts'  element={<Allexperts/>}/>
-    <Route path='/expertform'  element={<PrivateRoute><Expertform/></PrivateRoute>}/>
+    <Route path='/expertform'  element={<Expertform/>}/>
     <Route path='/allexperts/:id'  element={<Expertdetails/>}/>
     <Route path='/allexperts/search/:searchkey'  element={<Filteredexperts/>}/>
-    <Route path='/forums/search/:searchkey'  element={<PrivateRoute><Filteredforums/></PrivateRoute>}/>
 
-    <Route path='/rate'  element={<PrivateRoute><StarRating/></PrivateRoute>}/>
-    <Route path='/hirerequests'  element={<PrivateRoute><Hirerequest/></PrivateRoute>}/>
-    <Route path='/proposals'  element={<PrivateRoute><ProposalList/></PrivateRoute>}/>
-    <Route path='/allexperts/details/clientform'  element={<PrivateRoute><Clientform/></PrivateRoute>}/>
+    <Route path='/rate'  element={<StarRating/>}/>
+    <Route path='/hirerequests'  element={<Hirerequest/>}/>
+    <Route path='/proposals'  element={<ProposalList/>}/>
+    <Route path='/allexperts/details/clientform'  element={<Clientform/>}/>
+    <Route path='/test'  element={<Showreviews/>}/>
+    <Route path='/details'  element={<Details/>}/>
       </Routes>
       </AuthProvider>
     </div>
