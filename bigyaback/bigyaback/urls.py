@@ -29,10 +29,10 @@ urlpatterns = [
     path('response/<int:id>/',Responseto.as_view()),
     path('forums/',Postforums.as_view()),
     path('comments/',Postcomments.as_view()),
-
-    
     path('submitexpert/',ExpertProfileView.as_view()),
-    path('filteredexperts/',FilteredexpertsView.as_view())
+    path('filteredexperts/',FilteredexpertsView.as_view()),
+    path('filteredforums/',FilteredforumsView.as_view())
+
 
 ]
 if settings.DEBUG:

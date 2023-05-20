@@ -413,6 +413,24 @@ class Postcomments(APIView):
       })
    
 
+class FilteredforumsView(APIView):
+   def get(self,request):
+      search_query=request.query_params.get('searchQuery',None)
+      print(search_query)
+      if search_query:
+         filteredforums=Content.objects.filter(title__icontains=search_query)
+      serializer=ContentSerializer(filteredforums,many=True)
+      data=serializer.data
+      for post_data in data:
+         post=Content.objects.get(id=post_data['id'])
+         comments=Comments.objects.filter(post=post)
+         comment_serializer=CommentSerializer(comments,many=True)
+         post_data['comments']=comment_serializer.data
+      return Response({
+         'status':200,
+         'message':'filteredforums',
+         'data':data
+      })
 
 
 
