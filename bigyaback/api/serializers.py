@@ -25,8 +25,9 @@ class UserLoginSerializer(serializers.ModelSerializer):
     fields = ['email', 'password']
 
 class ExpertProfileSerializer(serializers.ModelSerializer):
+    userid=serializers.IntegerField(write_only=True)
     expert_image=serializers.ImageField(use_url=True)
-    userid=serializers.IntegerField(source='user.id')
+   
     # ratings=RatingSerializer(many=True)
     # weighted_rating=serializers.SerializerMethodField()
 
@@ -93,3 +94,17 @@ class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model=Rating
         fields=['username','user','rating','review','expert']
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    postid=serializers.IntegerField(write_only=True)
+    class  Meta:
+        model=Comments
+        fields=('post','comment','commented_by','postid')
+
+class ContentSerializer(serializers.ModelSerializer):
+    comments=CommentSerializer(many=True,read_only=True)
+    class  Meta:
+        model=Content
+        fields=('id', 'title', 'contentvalue','comments')
+

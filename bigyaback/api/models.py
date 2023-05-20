@@ -57,4 +57,19 @@ class Rating(models.Model):
 
     def __str__(self):
         return self.expert.name
+    
+
+class Content(models.Model):
+    id = models.AutoField(primary_key=True)
+    posted_by=models.ForeignKey(User,on_delete=models.CASCADE,default=None)
+    title=models.CharField(max_length=200)
+    contentvalue=models.TextField()
+    def __str__(self):
+        return str(self.title)
+
+class Comments(models.Model):
+    post=models.ForeignKey(Content,on_delete=models.CASCADE)
+    comment=models.CharField(max_length=200)
+    commented_by=models.ForeignKey(User,on_delete=models.CASCADE)
+    
                                

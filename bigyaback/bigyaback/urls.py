@@ -27,6 +27,8 @@ urlpatterns = [
     path('clientform/',Clientrequest.as_view()),
     path('clientside/',Clientside.as_view()),
     path('response/<int:id>/',Responseto.as_view()),
+    path('forums/',Postforums.as_view()),
+    path('comments/',Postcomments.as_view()),
 
     
     path('submitexpert/',ExpertProfileView.as_view()),

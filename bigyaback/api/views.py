@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import exceptions
 # Create your views here.
 from .emails import *
 from rest_framework import status
@@ -132,37 +133,35 @@ class UserLoginView(APIView):
         #     return Response('haha')
 
 
-class ExpertProfileView(APIView):
+class ExpertProfileView(APIView):   
     def post(self,request):
-        data=request.data
-        print(data)
-        serializer=ExpertProfileSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({
-                'status':200,
-                'message':'expert form has been submitted',
-                'data':{}
+        try:
+           
+         data=request.data
+         print(data)
+         serializer=ExpertProfileSerializer(data=data)
+         if serializer.is_valid():
+               serializer.save()
+               return Response({
+                  'status':200,
+                  'message':'expert form has been submitted',
+                  'data':{}
 
-            })
-        return Response({
-            'status':400,
-            'message':'Sorry',
-            'data':serializer.errors
+               })
+         return Response({
+               'status':400,
+               'message':'Sorry',
+               'data':serializer.errors
 
-        })
-    
+         })
+        except Exception as e:
+           return Response({
+              'status':400,
+              'data':'You have already submitted expert form'
+           })
     def get(self,request):
-       experts=cache.get("everyexperts")
-       if experts is not None:
-          return Response({
-             'status':200,
-             'message':'all experts from cache',
-             'data':experts
-          })
        experts=ExpertProfile.objects.all()
        serializer=ExpertProfileSerializer(experts,many=True)
-       cache.set('everyexperts',serializer.data)
        return Response({
           'status':200,
           'message':'data from disk',
@@ -191,10 +190,7 @@ class RatingView(APIView):
       data=request.data
       expert=ExpertProfile.objects.get(id=expert_id)
       rating=data['ratingofex']
-      print(rating)
-      print(data)
-      print(expert.id)
-      print(expert.name)
+      print(f"The rating submitted now is {rating}")
       
       user=request.user
       review=data['review']
@@ -205,11 +201,14 @@ class RatingView(APIView):
 
 
          prevrating=ratingfilter.rating
+         print(f"the previous rating by this user is {prevrating}")
          prevavgrating=expert.ratingofex
+         print(f"The previous average rating of this user is {prevavgrating}")
 
          ratingfilter.rating=rating
          ratingfilter.save()
-         expert.ratingofex=math.ceil((prevavgrating*2-prevrating+ratingfilter.rating)/2)
+         expert.ratingofex=math.floor((prevavgrating*2-prevrating+ratingfilter.rating)/2)
+         print(f"the new rating is {expert.ratingofex}")
          expert.save()
          return Response('rating saved')
       
@@ -219,7 +218,7 @@ class RatingView(APIView):
             expert.ratingofex=rating
             expert.save()
          else:
-            expert.ratingofex=math.ceil((expert.ratingofex+rating)/2)
+            expert.ratingofex=math.floor((expert.ratingofex+rating)/2)
             expert.save()
 
 
@@ -351,6 +350,72 @@ class Responseto(APIView):
     #      'data':serializer.errors
 
     #     })
+
+class Postforums(APIView):
+   def post(self,request):
+      try:
+         user=request.user
+         data=request.data
+         contentvalue=data['contentvalue']
+         title=data['title']
+         Content.objects.create(posted_by=user,contentvalue=contentvalue,title=title)
+         return Response({
+            'status':200,
+            'data':'posted'
+         })
+      except Exception as e:
+         return Response({
+            'status':400,
+            'data':'post was not saved'
+         })
+      
+   def get(self,request):
+      allposts=Content.objects.all()
+      serializer=ContentSerializer(allposts,many=True)
+      data=serializer.data
+      for post_data in data:
+         post=Content.objects.get(id=post_data['id'])
+         comments=Comments.objects.filter(post=post)
+         comment_serializer=CommentSerializer(comments,many=True)
+         post_data['comments']=comment_serializer.data
+      return Response({
+         'status':200,
+         'message':'allposts',
+         'data':data
+      })
+   
+class Postcomments(APIView):
+   def post(self,request):
+      try:
+         user=request.user
+         data=request.data
+         comment=data['comment']
+         postid=data['postid']
+         post=Content.objects.get(id=postid)
+         Comments.objects.create(commented_by=user,comment=comment,post=post)
+         return Response({
+            'status':200,
+            'data':'posted'
+         })
+      except Exception as e:
+         return Response({
+            'status':400,
+            'data':'comment was not saved'
+         })
+      
+   def get(self,request):
+      allcomments=Comments.objects.all()
+      serializer=CommentSerializer(allcomments,many=True)
+      return Response({
+         'status':200,
+         'message':'allposts',
+         'data':serializer.data
+      })
+   
+
+
+
+
 
             
 
