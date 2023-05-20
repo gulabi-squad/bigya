@@ -23,13 +23,14 @@ function ProposalList() {
   }, []);
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="bg-gray-100">
+    <div className=" bg-white mx-auto max-w-2xl">
       <h2 className="text-2xl font-bold mb-4">Proposals</h2>
       {proposals.length > 0 ? (
         proposals.map((proposal,index) => {
             index=index+1
             return(
-          <div key={index} className="border rounded-lg p-4 mb-4">{proposal.expertname}
+          <div  key={index} className="bg-orange-100 border rounded-lg p-4 mb-4">{proposal.expertname}
             <h3 className="text-xl font-bold mb-2"></h3>
             <p className="text-gray-600 text-sm mb-2">{proposal.description}</p>
             <p className="text-gray-500 text-sm">{proposal.date}</p>
@@ -41,6 +42,7 @@ function ProposalList() {
       ) : (
         <p className="text-gray-500">No proposals found.</p>
       )}
+    </div>
     </div>
   );
 }

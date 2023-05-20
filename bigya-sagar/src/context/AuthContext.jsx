@@ -21,7 +21,8 @@ export const AuthProvider=({children})=>{
      
         })
         let data=await response.json()
-        if(response.status===200){
+        console.log(data)
+        if(data.status===200){
             setAuthtoken(data.token)
             setUser(jwt_decode(data.token.access))
             console.log(user)
@@ -29,7 +30,8 @@ export const AuthProvider=({children})=>{
             navigate('/')
         }
         else{
-            alert('Something went wrong')
+            console.log(data)
+            alert('Bad Credentials')
         }
     }
     const logoutUser=()=>{

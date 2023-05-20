@@ -6,7 +6,8 @@ import { useContext } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 const Expertform = () => {
-  let {user}=useContext(AuthContext)
+  let [status,setStatus]=useState('')
+  let {user,tokens}=useContext(AuthContext)
   let [ename, setEname] = useState('')
   let [desc, setDesc] = useState('')
   let [category, setCategory] = useState('')
@@ -22,10 +23,11 @@ const Expertform = () => {
     uploadData.append('category', category)
     uploadData.append('userid',user.user_id)
     e.preventDefault()
+    console.log("function hit")
     let response=await fetch('http://127.0.0.1:8000/submitexpert/',{
      method:'POST',
      headers:{
-        
+      Authorization: `Bearer ${tokens.access}`
      },
      body:uploadData
  
@@ -34,11 +36,14 @@ const Expertform = () => {
     console.log(data)
     if (data.status===200){
         console.log('haha saved')
+        setStatus('success')
         navigate('/signup/otp')
+        
         
        }
        else{
         alert('Something went wrong')
+        setStatus('error')
        }
 
    }
@@ -61,6 +66,10 @@ const Expertform = () => {
 </div>
 
 </form>
+<div>
+{status=="success" && <div>Expert form has been submitted</div>}
+{status=="error" && <div>You already have an expert profile</div>}
+</div>
 </div>
   )
 }

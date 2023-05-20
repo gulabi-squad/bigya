@@ -18,6 +18,7 @@ import Clientform from './components/clientform';
 import Hirerequest from './pages/hired.component';
 import ProposalList from './pages/Proposals';
 import Filteredexperts from './pages/filteredexperts';
+import Createpost from './pages/Forums';
 function App() {
   return (
     <Router>
@@ -30,6 +31,7 @@ function App() {
     <Route path='/signup/otp'  element={<Otp/>}/>
 
     <Route path='/login'  element={<Login/>}/>
+    <Route path='/forums'  element={<Createpost/>}/>
     <Route path='/allexperts'  element={<Allexperts/>}/>
     <Route path='/expertform'  element={<Expertform/>}/>
     <Route path='/allexperts/:id'  element={<Expertdetails/>}/>

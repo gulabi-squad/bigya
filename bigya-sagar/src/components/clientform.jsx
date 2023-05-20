@@ -4,13 +4,13 @@ import { useContext } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import AuthContext from '../context/AuthContext'
+import { Navbar } from '../pages/home.component'
 const Clientform = () => {
     let {state}=useLocation()
     let {user,tokens}=useContext(AuthContext)
     let [status,setStatus]=useState(null)
     
     console.log(state.id)
-    console.log(user.user_id)
     const submitClient= (e)=>{
         console.log(e.target.location.value)
         console.log(e.target.date.value)
@@ -45,6 +45,7 @@ const Clientform = () => {
     }
     return (
         <div>
+            <Navbar/>
             <div className="flex justify-center">
                 <form onSubmit={submitClient}>
                 <div className=" flex flex-col gap-4 justify-center items-center w-[50rem] h-[32rem] border-2 mt-20 text-opacity-70" > 

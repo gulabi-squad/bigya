@@ -55,11 +55,11 @@ const Hirerequest = () => {
             <div className=" flex flex-col gap-4 justify-center items-center w-[50rem] h-[32rem] border-2 mt-20 text-opacity-70" > 
             <div className="gap-2">You've received a new hire request </div>
       
-            <div className="text-opacity-50"> Name: <input className="width-[417px]  border-b-2 border-solid border-black" value={hirer.username}/>  </div> 
-            <div> Date: <input className="width-[417px]  border-b-2 border-solid border-black" value={hirer.date}/>  </div> 
-            <div> Time: <input className="width-[417px]  border-b-2 border-solid border-black" value={hirer.time}/>  </div> 
-            <div> Location:<input className="width-[417px]  border-b-2 border-solid border-black" value={hirer.location}/>  </div> 
-            <div> Description: <input className="width-[20rem] h-[10rem] border-2 border-solid border-black" value={hirer.description}/>  </div> 
+            <div className="text-opacity-50"> Name: <input className="border-b-2 border-solid border-black" value={hirer.username}/>  </div> 
+            <div> Date: <input className="border-b-2 border-solid border-black" value={hirer.date}/>  </div> 
+            <div> Time: <input className="border-b-2 border-solid border-black" value={hirer.time}/>  </div> 
+            <div> Location:<input className="border-b-2 border-solid border-black" value={hirer.location}/>  </div> 
+            <div> Description: <input className="overflow-auto w-[20rem] resize-none h-[10rem] border-2 border-solid border-black" value={hirer.description}/>  </div> 
             <div><button onClick={()=>Accepthandler(hirer.id)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">
         Accept
       </button>

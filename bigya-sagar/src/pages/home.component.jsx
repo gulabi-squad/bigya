@@ -35,7 +35,7 @@ export function Navbar(){
                 <a href="/" className="text-gray-800 hover:text-gray-600">Home</a>
               </li>
               <li>
-                <a href="/expertlist" className="text-gray-800 hover:text-gray-600">Experts</a>
+                <a href="/allexperts" className="text-gray-800 hover:text-gray-600">Experts</a>
               </li>
               <li>
                 <a href="/forums" className="text-gray-800 hover:text-gray-600">Forums</a>
