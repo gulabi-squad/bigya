@@ -1,26 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const BASE_URL = 'http://localhost:8000';
 
-function Allforums() {
+function Filteredforums() {
+  const {searchkey}=useParams()
   const {tokens}=useContext(AuthContext)
   const [posts, setPosts] = useState([]);
-  const [newPost, setNewPost] = useState({ title: '', contentvalue: '' });
+//   const [newPost, setNewPost] = useState({ title: '', contentvalue: '' });
   const [newComment, setNewComment] = useState({ postid: '', comment: '' });
-  const [searchkey,setSearchkey]=useState('')
-  let navigate=useNavigate()
-  const handlesubmit=(e)=>{
-    console.log('search')
-    
-    console.log(searchkey)
-    navigate(`/forums/search/${searchkey}`)
-
-
-  }
-
 
   useEffect(() => {
     fetchPosts();
@@ -28,7 +18,7 @@ function Allforums() {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/forums/`);
+      const response = await axios.get(`${BASE_URL}/filteredforums/?searchQuery=${searchkey}`);
       console.log(response.data)
       setPosts(response.data.data);
     } catch (error) {
@@ -36,19 +26,7 @@ function Allforums() {
     }
   };
 
-  const createPost = async () => {
-    try {
-      await axios.post(`${BASE_URL}/forums/`, newPost,{
-        headers: {
-          Authorization: `Bearer ${tokens.access}`
-      }
-      });
-      fetchPosts();
-      setNewPost({ title: '', contentvalue: '' });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+
 
   const createComment = async () => {
     try {
@@ -74,39 +52,7 @@ function Allforums() {
   return (
     <div className="container mx-auto">
       <h1 className="text-3xl font-bold mb-4">Forum</h1>
-      <form onSubmit={handlesubmit}>
-            <input
-              type="text"
-              name="search"
-              onChange={(e)=>setSearchkey(e.target.value)}
-              placeholder="Search"
-              className="bg-white-200 text-gray-800 px-4 py-2 rounded-xl border border-black-200 focus:outline-none focus:ring focus:ring-blue-300"
-            />
-            <input type="submit" className="text-red-700" value="Search"/>
 
-</form>
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Create a Post</h2>
-        <input
-          className="border border-gray-300 rounded p-2 mr-2"
-          type="text"
-          placeholder="Title"
-          value={newPost.title}
-          onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-        />
-        <textarea
-          className="border border-gray-300 rounded p-2 mr-2"
-          placeholder="Content"
-          value={newPost.contentvalue}
-          onChange={(e) => setNewPost({ ...newPost, contentvalue: e.target.value })}
-        />
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={createPost}
-        >
-          Create Post
-        </button>
-      </div>
 
       {posts.map((post) => (
         <div key={post.id} className="border border-gray-300 rounded p-4 mb-4">
@@ -142,7 +88,7 @@ function Allforums() {
   );
 }
 
-export default Allforums;
+export default Filteredforums;
 
 
 
