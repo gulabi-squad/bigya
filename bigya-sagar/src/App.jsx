@@ -18,8 +18,7 @@ import Clientform from './components/clientform';
 import Hirerequest from './pages/hired.component';
 import ProposalList from './pages/Proposals';
 import Filteredexperts from './pages/filteredexperts';
-import Showreviews from './components/showreviews';
-import Details from './components/details'
+import Showreviews from './components/showreviews.jsx';
 function App() {
   return (
     <Router>
@@ -41,8 +40,7 @@ function App() {
     <Route path='/hirerequests'  element={<Hirerequest/>}/>
     <Route path='/proposals'  element={<ProposalList/>}/>
     <Route path='/allexperts/details/clientform'  element={<Clientform/>}/>
-    <Route path='/test'  element={<Showreviews/>}/>
-    <Route path='/details'  element={<Details/>}/>
+    <Route path='/reviews'  element={<Showreviews/>}/>
       </Routes>
       </AuthProvider>
     </div>

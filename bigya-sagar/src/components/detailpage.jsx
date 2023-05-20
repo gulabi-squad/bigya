@@ -7,7 +7,7 @@ import axios from 'axios'
 import { FaStar } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
-import Showreviews from './showreviews'
+import Showreviews from './showreviews.jsx'
 
 
 
@@ -64,15 +64,16 @@ const Expertdetails = () => {
     
 
 
- </div>
- <div className=" absolute w-[409px] h-[51px] ml-[100px]   max-w-full">
+
 {/* {state.description}  */}
 <div className="flex justify-center text-center">
-    <div className="bg-green-600 mt-[20rem] w-[150px] h-[50px] border rounded-xl text-white font-bold py-2 text-[20px] hover:bg-green-900"> <Link to="/allexperts/details/clientform" state={state}> HIRE ME</Link> </div>
+    <div className="bg-green-600 mt-[2rem] w-[150px] h-[50px] border rounded-xl text-white font-bold py-2 text-[20px] hover:bg-green-900"> <Link to="/allexperts/details/clientform" state={state}> HIRE ME</Link> </div>
     </div>
 
+ 
 
- </div>
+
+ 
 
  {/* <div className="mt-[3rem] ml-[100rem]">
  <StarRating expert={state}/>
@@ -91,7 +92,7 @@ const Expertdetails = () => {
       </div> */}
     
       {/* [star ratings] */}
-    <div className="p-4 mt-18  flex items-center text-sm text-gray-600 ml-[14rem]"> 
+    <div className="p-4 mt-[-15rem]  flex items-center text-sm text-gray-600 ml-[7rem]"> 
     {[...Array(5)].map((star,index)=>{
       const ratingValue=userratings.rating
         return(<div className="ml">
@@ -105,8 +106,9 @@ const Expertdetails = () => {
     
 
  )
- }):<div>No rating and reviews</div>
+ }):<div className="mt-[-20rem] ml-6 ">No rating and reviews</div>
  }
+ </div>
  </div>
  </div>
  <div className="w-1/2 ">
