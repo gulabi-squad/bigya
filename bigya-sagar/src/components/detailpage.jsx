@@ -44,10 +44,6 @@ const Expertdetails = () => {
 
 
  </div>
-
- <div>
- <StarRating expert={state}/>
- </div>
  {userratings.length>0?userratings.map((userratings,index)=>{
 
   return(

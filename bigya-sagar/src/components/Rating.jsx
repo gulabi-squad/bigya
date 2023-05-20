@@ -3,14 +3,16 @@ import axios from "axios";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import AuthContext from "../context/AuthContext";
-const StarRating = ({expert}) => {
+import { useLocation } from "react-router-dom";
+const StarRating = () => {
+    const {state}=useLocation()
     let {tokens}=useContext(AuthContext)
     const [rating, setRating] = useState(0);
     const [review,setReview]=useState('')
     const [hover, setHover] = useState(0);
 
     const handleRatingChange=()=>{
-      const url = `http://127.0.0.1:8000/rateexpert/${expert.id}/`;
+      const url = `http://127.0.0.1:8000/rateexpert/${state}/`;
     const data = { ratingofex: rating,
                    review:review         
     };
