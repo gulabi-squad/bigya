@@ -21,7 +21,7 @@ const Profile = () => {
         <div>
           <button
             type="button"
-            className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-300 hover:bg-gray-400"
+            className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 hover:bg-gray-400"
             onClick={handleDropdownToggle}
           >
             <span className="sr-only">Toggle Dropdown</span>
