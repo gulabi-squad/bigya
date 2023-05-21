@@ -36,9 +36,9 @@ const Homepage = () => {
       <Navbar />
       <div className='px-20 w-full h-[45rem] bg-cover' style={{ backgroundImage: 'url(/src/assets/girl_with_laptop.jpg)' }}>
         <div className='pt-[12rem]'>
-          <p className='text-white font-bold text-3xl py-4 max-w-lg'>NEED AN EXPERT WHO CAN DO YOUR JOB?</p>
-          <p className='absolute p-1'><FiSearch /></p>
-          <input type="text" className='rounded pl-16'></input>
+          <p className='text-white font-bold text-3xl py-4 max-w-lg mt-4'>NEED AN EXPERT WHO CAN DO YOUR JOB?</p>
+          <p className='absolute p-1 mt-1'><FiSearch /></p>
+          <input type="text" className='rounded pl-16 h-8'></input>
         </div>
       </div>
       <div className="flex items-center justify-center h-screen bg-gray-100">
