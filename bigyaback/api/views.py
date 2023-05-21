@@ -135,8 +135,8 @@ class UserLoginView(APIView):
 
 class ExpertProfileView(APIView):   
     def post(self,request):
+        cache.delete_pattern('search_results_*')
         try:
-           
          data=request.data
          print(data)
          serializer=ExpertProfileSerializer(data=data)
@@ -171,10 +171,19 @@ class ExpertProfileView(APIView):
 class FilteredexpertsView(APIView):
    def get(self,request):
       search_query=request.query_params.get('searchQuery',None)
+      cache_key=f'search_results_{search_query}'
       print(search_query)
+      cached_results=cache.get(cache_key)
+      if cached_results:
+         return Response({
+            'status':200,
+            'message':'data from cache',
+            'data':cached_results
+         })
       if search_query:
          filteredexperts=ExpertProfile.objects.filter(name__icontains=search_query) or ExpertProfile.objects.filter(category__icontains=search_query)
       serializer=ExpertProfileSerializer(filteredexperts,many=True)
+      cache.set(cache_key,serializer.data)
 
       return Response({
          'status':200,
