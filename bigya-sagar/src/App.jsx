@@ -20,6 +20,7 @@ import ProposalList from './pages/Proposals';
 import Filteredexperts from './pages/filteredexperts';
 import Showreviews from './components/showreviews.jsx';
 import PrivateRoute from './utils.jsx/PrivateRoute';
+import Allforums from './pages/Forums';
 function App() {
   return (
     <Router>
@@ -42,6 +43,8 @@ function App() {
     <Route path='/proposals'  element={<PrivateRoute><ProposalList/></PrivateRoute>}/>
     <Route path='/allexperts/details/clientform'  element={<PrivateRoute><Clientform/></PrivateRoute>}/>
     <Route path='/reviews'  element={<Showreviews/>}/>
+    <Route path='/forums'  element={<PrivateRoute><Allforums/></PrivateRoute>}/>
+
       </Routes>
       </AuthProvider>
     </div>

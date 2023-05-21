@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FaStar } from "react-icons/fa";
 import { Link } from 'react-router-dom'
 import doctorimage from './doctor.jpeg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import StarRating from '../components/Rating'
-import { Navbar } from './home.component';
+
 
 import axios from 'axios'
+import AuthContext from '../context/AuthContext';
+import Navbar from './navbar.component';
 const Allexperts= () => {
   let [experts,setExperts]=useState([])
+  let {tokens}=useContext(AuthContext)
 
  const getExperts=()=>{
  axios.get('http://127.0.0.1:8000/submitexpert/')
@@ -34,7 +37,7 @@ const Allexperts= () => {
  }
 
   return (<div>
-      <Navbar />
+     <Navbar/>
   
         <div className="mt-7 antialiased bg-gray-200 text-gray-900 font-sans p-6">
   <div className="container mx-afto">

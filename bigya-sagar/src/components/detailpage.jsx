@@ -2,20 +2,26 @@
 import doctorimage from '../pages/doctor.jpeg'
 import { Link, useLocation } from 'react-router-dom'
 import StarRating from './Rating'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { FaStar } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import Showreviews from './showreviews.jsx'
+import AuthContext from '../context/AuthContext'
 
 
 
 const Expertdetails = () => {
+  const {tokens}=useContext(AuthContext)
   const {state}=useLocation()
   const [userratings,setUserratings]=useState([])
   const getratingreviews=()=>{
-    axios.get(`http://127.0.0.1:8000/rateexpert/${state.id}/`)
+    axios.get(`http://127.0.0.1:8000/rateexpert/${state.id}/`,{
+      headers: {
+        Authorization: `Bearer ${tokens.access}`
+    }
+    })
     .then(response=>{
       console.log(response)
       setUserratings(response.data.data)
@@ -23,6 +29,7 @@ const Expertdetails = () => {
     .catch(error=>console.log(error))
   }
   useEffect(()=>{
+    console.log(state)
     getratingreviews()
   },[])
   if(!userratings){
@@ -48,15 +55,15 @@ const Expertdetails = () => {
   <div className="mt-20">
   <div className="text-center font-bold">{state.name}</div>
   <div className="text-center mt-1 font-light text-opacity-60"> {state.category} </div>
-  <div className=" opacity-95 mt-6 font-mono mb-4"> I can teach Physics, Chemistry and Mathematics for +2 students.  </div>
+  <div className=" opacity-95 mt-6 font-mono mb-4"> {state.description}  </div>
  <div>
       <FontAwesomeIcon className="mr-4" icon={faGraduationCap} />
-      <span className="text-lg"> MSc. Physics (TU) </span>
+      <span className="text-lg"> {state.qualification}</span>
       
     </div>
     <div className=''>
       <FontAwesomeIcon className="mr-4" icon={faBriefcase} />
-      <span className="text-lg"> New Modern Academy (2010-Present) </span>
+      <span className="text-lg"> {state.experience} </span>
     </div>
     </div>
     

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
 import axios from 'axios';
+import AuthContext from '../context/AuthContext';
 
 const Showreviews = ({state}) => {
   const [userratings,setUserratings]=useState([])
+  let {tokens}=useContext(AuthContext)
   const getratingreviews=()=>{
-    axios.get(`http://127.0.0.1:8000/rateexpert/${state.id}/`)
+    axios.get(`http://127.0.0.1:8000/rateexpert/${state.id}/`,{
+      headers: {
+        Authorization: `Bearer ${tokens.access}`
+    }
+    })
     .then(response=>{
       console.log(response)
       setUserratings(response.data.data)
