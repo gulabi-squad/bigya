@@ -32,6 +32,8 @@ class ExpertProfile(models.Model):
     description=models.TextField(max_length=500)
     category = models.CharField(max_length=40)
     ratingofex=models.IntegerField(blank=True,null=True,default=None)
+    qualification=models.CharField(max_length=300,default='No qualifications')
+    experience=models.CharField(max_length=300,default='No experiences')
     
     def __str__(self):
         return self.name

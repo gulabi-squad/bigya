@@ -9,7 +9,7 @@ from uuid import UUID
 from .serializers import *
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
 from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework_simplejwt.authentication import JWTAuthentication
@@ -133,9 +133,11 @@ class UserLoginView(APIView):
         #     return Response('haha')
 
 
-class ExpertProfileView(APIView):   
+class ExpertProfileView(APIView):  
+    permission_classes = [IsAuthenticatedOrReadOnly] 
     def post(self,request):
         cache.delete_pattern('search_results_*')
+        cache.delete('all_experts')
         try:
          data=request.data
          print(data)
@@ -160,15 +162,51 @@ class ExpertProfileView(APIView):
               'data':'You have already submitted expert form'
            })
     def get(self,request):
+       cache_key='all_experts'
+       experts=cache.get(cache_key)
+       if experts is not None:
+          return Response({
+             'status':200,
+             'message':'all experts from cache',
+             'data':experts
+          })
+          
+
        experts=ExpertProfile.objects.all()
+       
        serializer=ExpertProfileSerializer(experts,many=True)
+       cache.set(cache_key,serializer.data)
        return Response({
           'status':200,
           'message':'data from disk',
           'data':serializer.data
        })
+    
+class DeleteExpertView(APIView):
+   
+   def delete(self,request,pk):
+      cache.delete('all_experts')
+      userid=pk
+      user=User.objects.get(id=userid)
+      
+      try:
+         expert=ExpertProfile.objects.get(user=user)
+         expert.delete()
+         return Response({
+            'status':200,
+            'message':'Expert Profile deleted successfully',
+            'data':{}
+         })
+      except ExpertProfile.DoesNotExist:
+         print('no experts')
+         return Response({
+            'status':400,
+            'message':"Make an expert profile",
+            'data':"You don't have expert account"
+         })
 
 class FilteredexpertsView(APIView):
+   permission_classes = [IsAuthenticatedOrReadOnly]
    def get(self,request):
       search_query=request.query_params.get('searchQuery',None)
       cache_key=f'search_results_{search_query}'
@@ -182,6 +220,7 @@ class FilteredexpertsView(APIView):
          })
       if search_query:
          filteredexperts=ExpertProfile.objects.filter(name__icontains=search_query) or ExpertProfile.objects.filter(category__icontains=search_query)
+         print(filteredexperts.query)
       serializer=ExpertProfileSerializer(filteredexperts,many=True)
       cache.set(cache_key,serializer.data)
 
@@ -194,6 +233,7 @@ class FilteredexpertsView(APIView):
        
 
 class RatingView(APIView):
+   permission_classes = [IsAuthenticated]
    def post(self,request,pk):
       expert_id = UUID(pk)
       data=request.data
@@ -207,8 +247,6 @@ class RatingView(APIView):
       try:
          ratingfilter=Rating.objects.get(user=user,expert=expert)
          ratingfilter.review=review
-
-
          prevrating=ratingfilter.rating
          print(f"the previous rating by this user is {prevrating}")
          prevavgrating=expert.ratingofex
@@ -254,9 +292,9 @@ class RatingView(APIView):
          
 
 class Clientrequest(APIView):
-   authentication_classes = [JWTAuthentication]
    permission_classes = [IsAuthenticated]
    def post(self,request):
+      cache.delete_pattern('hire_requests_*')
       data=request.data
       serializer=WorkSerializer(data=data)
       if serializer.is_valid():
@@ -275,7 +313,17 @@ class Clientrequest(APIView):
    def get(self,request):
       expertuser=request.user
       experts=ExpertProfile.objects.get(user=expertuser)
+      print(experts.id)
+      cache_key=f"hire_requests_{experts.id}"
       thatexpert=Workdetails.objects.filter(expert=experts)
+      cached_results=cache.get(cache_key)
+      if cached_results:
+         return Response({
+            'status':200,
+            'message':'hirerequests from cache',
+            'data':cached_results
+         })
+
       if not thatexpert.exists():
          return Response({
             "status":400,
@@ -284,6 +332,7 @@ class Clientrequest(APIView):
 
          })
       serializer=WorkSerializer(thatexpert,many=True)
+      cache.set(cache_key,serializer.data)
       return Response({
          "status":200,
          "message":"You've got hirers",
@@ -293,6 +342,7 @@ class Clientrequest(APIView):
       
 
 class Clientside(APIView):
+   permission_classes = [IsAuthenticated]
    def get(self,request):
       user=request.user
       proposals=Workdetails.objects.filter(user=user)
@@ -312,6 +362,7 @@ class Clientside(APIView):
       })
    
 class Responseto(APIView):
+   permission_classes = [IsAuthenticated]
    def put(self,request,id):
 
       try:

@@ -33,7 +33,7 @@ class ExpertProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=ExpertProfile
-        fields=['id','user','userid','name','description','category','expert_image','ratingofex']
+        fields=['id','user','experience','qualification','userid','name','description','category','expert_image','ratingofex']
 
     def create(self, validated_data):
         user = User.objects.get(id=validated_data['userid'])
@@ -41,8 +41,10 @@ class ExpertProfileSerializer(serializers.ModelSerializer):
         category = validated_data['category']
         expert_image = validated_data['expert_image']
         description = validated_data['description']
+        experience = validated_data['experience']
+        qualification = validated_data['qualification']
         
-        return ExpertProfile.objects.create(user=user, name=name,category=category,expert_image=expert_image,description=description)
+        return ExpertProfile.objects.create( qualification=qualification,experience=experience,user=user, name=name,category=category,expert_image=expert_image,description=description)
         # def get_weighted_rating(self, obj):
         # # Calculate the weighted average of ratings for this post
         #     weighted_sum = 0
