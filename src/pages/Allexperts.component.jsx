@@ -5,7 +5,7 @@ import doctorimage from './doctor.jpeg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import StarRating from '../components/Rating'
-import { Navbar } from './home.component';
+import { Navbar } from './navbar.component';
 
 import axios from 'axios'
 const Allexperts= () => {

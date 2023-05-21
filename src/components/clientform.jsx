@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import AuthContext from '../context/AuthContext'
-import { Navbar } from '../pages/home.component'
+import { Navbar } from '../pages/navbar.component'
 const Clientform = () => {
     let {state}=useLocation()
     let {user,tokens}=useContext(AuthContext)
