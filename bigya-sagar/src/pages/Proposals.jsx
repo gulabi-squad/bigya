@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
 import AuthContext from '../context/AuthContext';
-
+import { Link } from 'react-router-dom';
 
 function ProposalList() {
     let {tokens}=useContext(AuthContext)
@@ -13,6 +13,7 @@ function ProposalList() {
       }
       })
     .then(response=>{
+      console.log(response.data.data)
         setProposals(response.data.data)
     })
     .catch(errors=>console.log(errors))
@@ -30,11 +31,15 @@ function ProposalList() {
         proposals.map((proposal,index) => {
             index=index+1
             return(
-          <div  key={index} className="bg-orange-100 border rounded-lg p-4 mb-4">{proposal.expertname}
+              <div key={index}>
+                <Link to='/rate' state={proposal.expert}>
+          <div  className="bg-orange-100 border rounded-lg p-4 mb-4">{proposal.expertname}
             <h3 className="text-xl font-bold mb-2"></h3>
             <p className="text-gray-600 text-sm mb-2">{proposal.description}</p>
             <p className="text-gray-500 text-sm">{proposal.date}</p>
             <div>Status:<span className="text-gray-500 text-sm">{proposal.status}</span> </div>
+          </div>
+          </Link>
           </div>)
 }
    

@@ -112,7 +112,7 @@ const Expertdetails = () => {
  </div>
  </div>
  <div className="w-1/2 ">
- <Showreviews/>
+ <Showreviews state={state}/>
  </div>
  </div>
 

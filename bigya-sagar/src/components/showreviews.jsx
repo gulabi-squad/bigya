@@ -1,57 +1,59 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { FaStar } from 'react-icons/fa';
+import axios from 'axios';
 
-const Review = ({ name, review, ratings }) => {
-  return (
-    <div className="bg-white rounded-lg p-4 shadow mb-4">
-      <h2 className="text-lg font-semibold mb-2">{name}</h2>
-      <div className="flex items-center mb-2">
-        <span className="text-yellow-500 text-lg mr-1">&#9733;</span>
-        <span className="text-yellow-500 text-lg mr-1">&#9733;</span>
-        <span className="text-yellow-500 text-lg mr-1">&#9733;</span>
-        <span className="text-yellow-500 text-lg mr-1">&#9733;</span>
-        <span className="text-yellow-500 text-lg">&#9734;</span>
-        <span className="text-gray-500 ml-2">{ratings}</span>
-      </div>
-      <p className="text-gray-700">{review}</p>
-    </div>
-  );
-};
-
-const Showreviews = () => {
-  const reviews = [
-    {
-      name: 'John Doe',
-      review: 'Great product! Highly recommended.',
-      ratings: '4.5',
-    },
-    {
-      name: 'Jane Smith',
-      review: 'Good quality and fast shipping.',
-      ratings: '5',
-    },
-    {
-      name: 'Michael Johnson',
-      review: 'Average product. Could be better.',
-      ratings: '3',
-    },
-    {
-      name: 'Sarah Williams',
-      review: 'Excellent customer service!',
-      ratings: '4',
-    },
-    {
-      name: 'David Brown',
-      review: 'Not satisfied with the product.',
-      ratings: '2.5',
-    },
-  ];
+const Showreviews = ({state}) => {
+  const [userratings,setUserratings]=useState([])
+  const getratingreviews=()=>{
+    axios.get(`http://127.0.0.1:8000/rateexpert/${state.id}/`)
+    .then(response=>{
+      console.log(response)
+      setUserratings(response.data.data)
+    })
+    .catch(error=>console.log(error))
+  }
+  useEffect(()=>{
+    getratingreviews()
+  },[])
+  if(!userratings){
+    return(
+      <div>Loading</div>
+    )
+  }
 
   return (
     
       <div className="">
-        {reviews.map((review, index) => (
+
+{userratings.length>0?userratings.map((userratings,index)=>{
+
+return(
+  <div key={index}>
+    <div className="bg-white rounded-lg p-4 shadow mb-4"><h2 className="text-lg font-semibold mb-2">{userratings.username}</h2>
+    <div className="text-gray-700"><p>{userratings.review}</p></div>
+  
+  
+  <div className="flex items-center mb-2 mt-2">
+  {[...Array(5)].map((star,index)=>{
+    const ratingValue=userratings.rating
+      return(
+        <div className="text-yellow-500 text-lg mr-1" key={index}>
+        <FaStar color={(index+1)<=ratingValue? "#facc15": "#d4d4d8"} /></div>
+      );
+  })}
+  </div>
+  </div>
+  </div>
+
+)
+}):<div>No rating and reviews</div>
+}
+
+        {/* {reviews.map((review, index) => (
           <Review key={index} {...review} />
-        ))}
+        ))} */}
       </div>
       
   );
