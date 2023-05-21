@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import { FaTrash } from 'react-icons/fa';
 const Profile = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -46,6 +47,10 @@ const Profile = () => {
             </div>
             <div className="px-4 py-2 text-sm text-gray-700"> <Link to="/hirerequests"> Hire Requests </Link></div>
             <div className="px-4 py-2 text-sm text-gray-700"> <Link to="/proposals"> Proposals </Link> </div>
+            <div className="flex items-center px-4 py-2 text-sm text-gray-700">
+                  <FaTrash className="w-4 h-4 mr-2" />
+                  Delete Your Expert Account
+                </div>
           </div>
         )}
       </div>
