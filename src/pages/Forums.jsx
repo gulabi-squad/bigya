@@ -115,7 +115,7 @@ function Allforums() {
             {post.comments.map((comment) => (
               <div className="flex items-center space-x-2 mb-2">
                 <img
-                  className="w-10 h-6 rounded-full"
+                  className="w- h-6 rounded-full"
                   src={userimage}
                   alt="Avatar"
                 />
