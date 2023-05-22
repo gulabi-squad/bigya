@@ -11,6 +11,8 @@ const Expertform = () => {
   let [ename, setEname] = useState('')
   let [desc, setDesc] = useState('')
   let [category, setCategory] = useState('')
+  let [qualification, setQualification] = useState('')
+  let [experience, setExperience] = useState('')
   const [image, setImage] = useState();
   let navigate=useNavigate()
   const [file, setFile] = useState(null);
@@ -21,6 +23,8 @@ const Expertform = () => {
     uploadData.append('description', desc)
     uploadData.append('expert_image',image)
     uploadData.append('category', category)
+    uploadData.append('qualification', qualification)
+    uploadData.append('experience', experience)
     uploadData.append('userid',user.user_id)
     e.preventDefault()
     console.log("function hit")
@@ -62,6 +66,13 @@ const Expertform = () => {
    </div>
    <div className="mt-2 w-screen flex items-center justify-center"> <input className="border border-black-100 placeholder-black placeholder-opacity-50 w-[340px] ml-[4rem] h-[43px] rounded-[7px] text-center" type="text" name="category" id="" placeholder="category" value={category} onChange={(event)=>setCategory(event.target.value)} required/>
 </div>
+
+<div className="mt-2 w-screen flex items-center justify-center"> <input className="border border-black-100 placeholder-black placeholder-opacity-50 w-[340px] ml-[4rem] h-[43px] rounded-[7px] text-center" type="text" name="qualification" id="" placeholder="Qualification" value={qualification} onChange={(event)=>setQualification(event.target.value)} required/>
+</div>
+
+<div className="mt-2 w-screen flex items-center justify-center"> <input className="border border-black-100 placeholder-black placeholder-opacity-50 w-[340px] ml-[4rem] h-[43px] rounded-[7px] text-center" type="text" name="experience" id="" placeholder="Experience" value={experience} onChange={(event)=>setExperience(event.target.value)} required/>
+</div>
+
 <div className=" mt-2 w-screen flex items-center justify-center"> <input className="bg-cyan-500 border border-black-100 placeholder-black placeholder-opacity-50 w-[340px] ml-[4rem] h-[43px] rounded-[7px] text-center text-white font-semibold" type="submit" name="" id="" value="Submit" required/>
 </div>
 
