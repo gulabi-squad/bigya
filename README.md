@@ -110,6 +110,13 @@ Bigya is an expert hiring platform where users can hire experts by submitting a 
 
 3. Open your web browser and access the Bigya application at `http://localhost:5173/`.
 
+
+## Screenshots
+![Landingpage]("https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newhomepage.png")
+![Loginpage]("https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newlogin.png")
+![Expertspage]("https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newallexperts.png")
+![Detailpage]("https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newdetailpage.png")
+
 ### API Documentation
 
 The API documentation is available at `http://localhost:8000/swagger/`. You can use Swagger UI to explore and interact with the API endpoints.
