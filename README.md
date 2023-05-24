@@ -1,4 +1,4 @@
-# Bigya Expert Hiring Platform
+# Bigya:Find Experts You Need
 
 Bigya is an expert hiring platform where users can hire experts by submitting a form. The platform allows experts to review the requests and react accordingly. This project is built using React.js for the front-end and Django REST Framework for the back-end.
 
@@ -10,7 +10,6 @@ Bigya is an expert hiring platform where users can hire experts by submitting a 
 - Rate and Review the Experts
 - Discussion forums for any queries
 - API documentation with Swagger
-- 
 
 ## Technologies Used
 
