@@ -10,7 +10,6 @@ Bigya is an expert hiring platform where users can hire experts by submitting a 
 - Rate and Review the Experts
 - Discussion forums for any queries
 - API documentation with Swagger
-- 
 
 ## Technologies Used
 
