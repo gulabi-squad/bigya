@@ -112,10 +112,10 @@ Bigya is an expert hiring platform where users can hire experts by submitting a 
 
 
 ## Screenshots
-![Landingpage]("https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newhomepage.png")
-![Loginpage]("https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newlogin.png")
-![Expertspage]("https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newallexperts.png")
-![Detailpage]("https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newdetailpage.png")
+![Landingpage](https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newhomepage.png)
+![Loginpage](https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newlogin.png)
+![Expertspage](https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newallexperts.png)
+![Detailpage](https://github.com/gulabi-squad/bigya/blob/master/Screenshots/newdetailpage.png)
 
 ### API Documentation
 
