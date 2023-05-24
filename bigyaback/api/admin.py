@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User
+from .models import *
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 class UserModelAdmin(BaseUserAdmin):
@@ -14,7 +14,7 @@ class UserModelAdmin(BaseUserAdmin):
   add_fieldsets = (
       (None, {
           'classes': ('wide',),
-          'fields': ('email', 'first_name' 'lastname','phone_no','password1', 'passwordconfirm'),
+          'fields': ('email', 'first_name' ,'last_name','phone_no','password1','password2','is_email_verified'),
       }),
   )
   search_fields = ('email',)
@@ -23,3 +23,8 @@ class UserModelAdmin(BaseUserAdmin):
 
 
 admin.site.register(User, UserModelAdmin)
+admin.site.register(ExpertProfile)
+admin.site.register(Rating)
+admin.site.register(Workdetails)
+admin.site.register(Comments)
+admin.site.register(Content)
