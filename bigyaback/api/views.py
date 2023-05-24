@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import exceptions
+from django.db.models import Q
 # Create your views here.
 from .emails import *
 from rest_framework import status
@@ -210,7 +211,6 @@ class FilteredexpertsView(APIView):
    def get(self,request):
       search_query=request.query_params.get('searchQuery',None)
       cache_key=f'search_results_{search_query}'
-      print(search_query)
       cached_results=cache.get(cache_key)
       if cached_results:
          return Response({
@@ -219,6 +219,7 @@ class FilteredexpertsView(APIView):
             'data':cached_results
          })
       if search_query:
+         print(search_query)
          filteredexperts=ExpertProfile.objects.filter(name__icontains=search_query) or ExpertProfile.objects.filter(category__icontains=search_query)
          print(filteredexperts.query)
       serializer=ExpertProfileSerializer(filteredexperts,many=True)
@@ -362,11 +363,9 @@ class Clientside(APIView):
       })
    
 class Responseto(APIView):
-   permission_classes = [IsAuthenticated]
    def put(self,request,id):
-
+      cache.delete_pattern('hire_requests_*')
       try:
-
          thatwork=Workdetails.objects.get(id=id)
          data=request.data
          status=data['status']

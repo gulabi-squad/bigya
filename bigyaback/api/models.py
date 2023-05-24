@@ -42,7 +42,7 @@ class Workdetails(models.Model):
     id = models.AutoField(primary_key=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True,default=None)
     expert=models.ForeignKey(ExpertProfile,on_delete=models.CASCADE,null=True,default=None)
-    description=models.TextField(max_length=1000,blank=False)
+    description=models.TextField(max_length=999,blank=False)
     date=models.DateField(auto_now=False)
     time=models.TimeField(default=None,auto_now=False)
     contact=models.CharField(max_length=10)

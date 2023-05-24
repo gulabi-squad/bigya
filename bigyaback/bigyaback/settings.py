@@ -39,11 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
     "corsheaders",
-    'rest_framework_simplejwt.token_blacklist',
     'rest_framework',
-    'drf_yasg'
+    'rest_framework_simplejwt.token_blacklist',
+    'drf_yasg',
+    'api',
+    
+    
+    
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
